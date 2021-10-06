@@ -927,13 +927,11 @@
       const beachMarker = new google.maps.Marker({
         position: answer,
         map,
-        new google.maps.Size(42, 68),
         icon: image,
       });
       const beachMarker2 = new google.maps.Marker({
         position: clickPosition,
         map,
-        new google.maps.Size(42, 68),
         icon: image,
       });
       var pos = midPoint(coordinates["lat"], coordinates["lng"],clickPosition.toJSON()["lat"], clickPosition.toJSON()["lng"]);
