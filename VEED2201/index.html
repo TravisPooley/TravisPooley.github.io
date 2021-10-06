@@ -928,11 +928,13 @@
         position: answer,
         map,
         icon: image,
+        scaledSize: new google.maps.Size(50, 50)
       });
       const beachMarker2 = new google.maps.Marker({
         position: clickPosition,
         map,
         icon: image,
+        scaledSize: new google.maps.Size(50, 50)
       });
       var pos = midPoint(coordinates["lat"], coordinates["lng"],clickPosition.toJSON()["lat"], clickPosition.toJSON()["lng"]);
       // alert(pos)
