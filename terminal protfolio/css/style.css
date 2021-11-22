@@ -1,0 +1,34 @@
+body {
+    background-color: #181a1b;
+    font-family: "Ubuntu Mono", courier, monospace;
+    font-size: 1em;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-break: break-all;
+
+}
+
+input {
+    color: white;
+    font-family: 'Ubuntu Mono';
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: none;
+    width: 70%;
+}
+
+p {
+    height: 1em;
+    display: table-row;
+}
+
+.lsDisplay {
+    color: #3391ff;
+    margin: 0px 25px 0 25px;
+}
+
+.lsDisplay:first-of-type {
+    margin-left: 0px;
+}
