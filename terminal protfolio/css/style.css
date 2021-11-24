@@ -22,6 +22,7 @@ input {
 p {
     height: 1em;
     display: table-row;
+    white-space: break-spaces;
 }
 
 .lsDisplay {
@@ -32,3 +33,20 @@ p {
 .lsDisplay:first-of-type {
     margin-left: 0px;
 }
+
+.blinkyBoi {
+    position: absolute;
+    width: 8px;
+    height: 1em;
+    background-color: white;
+    left: 1px;
+    opacity: 1;
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+
+
+animation-name: blink;
+animation-duration: 1000ms;
+animation-iteration-count: infinite;
+}
+
