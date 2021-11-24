@@ -1,12 +1,42 @@
 const input = document.getElementById('input');
 const history = document.getElementById('history');
-const files = {"readme.txt":"test readme file...", "about.txt":"My name is Travis Pooley, I'm a software engineer from Adelaide, Australia."};
+// const blinky = document.getElementById("blinky")
+const files = {"readme.txt":`
+    
+                                                         
+<p> _ _ _ _____ __    _____ _____ _____ _____    _____ _____                                    </p>
+<p>| | | |   __|  |  |     |     |     |   __|  |_   _|     |                                  </p> 
+<p>| | | |   __|  |__|   --|  |  | | | |   __|    | | |  |  |                                  </p> 
+<p>|_____|_____|_____|_____|_____|_|_|_|_____|    |_| |_____|                                  </p> 
+<p>                                                                                            </p>
+<p>                                                                                            </p>
+<p> _____ _____ _____ _____ _____ _____ _____ _____ _____ __    _____ __ __   _____ _____ _____ </p>
+<p>|_   _| __  |  _  |  |  |     |   __|  _  |     |     |  |  |   __|  |  | |     |     |     |</p>
+<p> | |  |    -|     |  |  |-   -|__   |   __|  |  |  |  |  |__|   __|_   _|_|   --|  |  | | | |</p>
+<p> |_|  |__|__|__|__|\\___/|_____|_____|__|  |_____|_____|_____|_____| |_| |_|_____|_____|_|_|_|</p>
+<p>                                                                                            </p>
+<p>readme.txt test...</p>
+
+ `, "about.txt":"My name is Travis Pooley, I'm a software engineer from Adelaide, Australia."};
 
 // add codepen
 const directories = {"FlindersFinder":"https://travispooley.com/VEED2201/", "LinkedIn":"https://www.linkedin.com/in/travispooley/", "Twitter":"https://twitter.com/TravisPooley"};
 
 let commandHistory = [];
 let historyNumber = -1;
+
+const STARTUP_COMMANDS = ["cat readme.txt", "ls", ""];
+const STARTUP_INPUT = STARTUP_COMMANDS.join(String.fromCharCode(13))
+
+let currentChar = 0;
+const interval = setInterval(function() {
+    if (STARTUP_INPUT[currentChar] == "\r") Enter();
+    else input.value = input.value + STARTUP_INPUT[currentChar];
+    currentChar++;
+    if (currentChar == STARTUP_INPUT.length) clearInterval(interval);
+}, 100);
+
+
 
 // auto focus on input
 function focus() {
@@ -82,12 +112,17 @@ function handleCommand(command) {
     console.log(command.split(" ")[0])
 }
 
-
+function Enter() {
+    handleCommand(input.value);
+    input.value = '';
+    historyNumber = -1;
+}
 input.addEventListener("keyup", function(event) {
+    console.log(event.target.selectionStart)
+    // blinky.style.left = event.target.selectionStart;
+
     if (event.key === "Enter") {
-        handleCommand(input.value);
-        input.value = '';
-        historyNumber = -1;
+        Enter();
     }
     else if (event.key === "ArrowUp") {
         // console.log(event.key)
