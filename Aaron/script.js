@@ -22,7 +22,8 @@ const CENTER = {
 
 // Set different places where the player will be spawned
 var places = [
-  [{ lat: -35.0708294, lng: 138.6079405}]
+  [{lat: -35.0924992, lng:138.5871781}],
+  // [{ lat: -35.0708294, lng: 138.6079405}]
 ]
 
 // selecting a random map location randomly
@@ -46,7 +47,7 @@ function initialize() {
     document.getElementById("street-view"), {
     position: coordinates,
     pov: {
-      heading: 200,
+      heading: 100,
       pitch: 0
     },
     zoom: 1,
