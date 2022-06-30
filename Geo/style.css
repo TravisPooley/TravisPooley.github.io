@@ -1,0 +1,137 @@
+html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    button {
+      width: 100px;
+      height: 25px;
+      color: white;
+      background-color: red;
+    }
+
+    img {
+      padding-top: 10px;
+    }
+
+    #street-view {
+      height: 100%;
+      filter: invert(1);
+    }
+
+    #floating-panel {
+      position: absolute;
+      top: 10px;
+      left: 5%;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+      text-align: center;
+      font-family: "Roboto", "sans-serif";
+      line-height: 30px;
+      padding-left: 10px;
+      width: 20%;
+      height: 30%;
+    }
+
+    #floating-panel {
+      margin-left: -100px;
+    }
+
+
+    .gm-compass-turn {
+      margin-top: 5px;
+    }
+
+
+    .map {
+      width: 550px;
+      height: 450px;
+      bottom: 100px;
+      left: 50px;
+      position: absolute;
+      background-color: red;
+
+      transition: width 0.2s, height 0.2s;
+      transition-timing-function: linear;
+    }
+
+    .map:hover {
+      width: 75%;
+      height: 75%;
+    }
+
+    .guess {
+      position: absolute;
+      bottom: 30px;
+      left: 50px;
+      width: 550px;
+      padding: 25px 0 25px 0;
+      height: 20px;
+      background-color: green;
+      border: 0px;
+      border-radius: 25px;
+      display: none;
+    }
+
+    .result {
+      display: none;
+      position: absolute;
+      left: 25%;
+      bottom: 50px;
+      width: 50%;
+      height: 30%;
+      background-color: white;
+      border-radius: 5px;
+      text-align: center;
+      z-index: 999;
+    }
+    .result p {
+      margin-top: 7%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .result button {
+      border: none;
+      background-color: green;
+      border-radius: 20px;
+      width: 200px;
+      height: 30px;
+    }
+
+    .hint {
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        right:5%;
+        padding: 10px 0 10px 0;
+        color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        background: rgb(255,255,255);
+        opacity: 0.9;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,0,0,1) 50%, rgba(255,255,255,0) 100%);
+        z-index: 999999;
+        text-align: center;
+        justify-content: center;
+        display: none;
+    }
+
+    .hintOffer {
+        z-index: 9999;
+        background: #dddddd;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        border: 0px;
+        border-radius: 2px;
+        width: 40px;
+        height: 40px;
+        color: #999999;
+        font-size: 20px;
+        font-weight: bold;
+    }
