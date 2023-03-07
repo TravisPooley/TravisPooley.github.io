@@ -168,8 +168,12 @@ function focus() {
 }
 
 function handleCommand(command) {
+    // transform command to lowercase for case insensitivity
+    command = command.toLowerCase();
+
     const line = document.createElement('p');
-    console.log(command)
+    // console.log(command)
+
     // sanitise input
     const commandText = document.createElement('span');
     commandText.innerText = command;
