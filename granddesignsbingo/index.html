@@ -62,7 +62,7 @@
     <h1>Bingo Card Generator</h1>
     <div class="controls">
         <label for="size">Select Bingo Card Size (x by x): </label>
-        <input type="number" id="size" value="5" min="5" max="10">
+        <input type="number" id="size" value="5" min="3" max="10">
         <button class="generate-btn" onclick="generateBingoCard()">Generate Bingo Card</button>
     </div>
 
@@ -124,7 +124,7 @@
 
         function generateBingoCard() {
             const size = parseInt(document.getElementById("size").value);
-            if (isNaN(size) || size < 5 || size > 10) {
+            if (isNaN(size) || size < 3 || size > 10) {
                 alert("Please enter a valid size between 5 and 10.");
                 return;
             }
