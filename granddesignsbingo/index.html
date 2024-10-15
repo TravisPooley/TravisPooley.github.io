@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bingo-card {
+            display: grid;
+            gap: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .bingo-button {
+            border: 2px solid #333;
+            padding: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .bingo-button.marked {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button.generate-btn {
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .winner-message {
+            font-size: 24px;
+            color: #f00;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bingo Card Generator</h1>
+    <div class="controls">
+        <label for="size">Select Bingo Card Size (x by x): </label>
+        <input type="number" id="size" value="5" min="5" max="10">
+        <button class="generate-btn" onclick="generateBingoCard()">Generate Bingo Card</button>
+    </div>
+
+    <div id="bingoContainer"></div>
+    <div id="winnerMessage" class="winner-message"></div>
+
+    <script>
+        const values = [
+            "Planning to be in by christmas", "Kevin is pessimistic", "House isn't watertight", "Windows haven't arrived", 
+            "Project comes to a halt", "Kevin says 'art deco'", "Had to borrow money", "Kevin says 'eco'", "Living in a caravan", 
+            "Fired Architect", "Became project manager", "Fired builder", "Divorced", "Quit their job", "Settled for basic furniture", 
+            "Hidden problem costs thousands", "Health problem", "Ground works took longer", "Waiting for the bank", 
+            "Building themselves", "Compromised on something", "Fired project manager", "Ran out of money", 
+            "Gone over budget", "Visited supplier", "Regret", "Something doesn't fit", "Bad foundations", 
+            "Biblical rain", "No thought for the kids", "Kids never live in the house", "Over timeframe", 
+            "Irate neighbor", "Unrealistic budget", "Mate roped in for free labor", "Ostentatious custom furniture", 
+            "Kevin says 'bespoke'", "No planning permissions", "Partner hates it", "Ignoring doctor's orders", 
+            "Pregnant", "contractor pulls out", "Kevin disapproves of the timeline", "Delays due to planning permissions", 
+            "Unforeseen structural issues", "Weather delays", "Over budget by thousands", "Kevin uses the word 'ambitious'", 
+            "Owner changes the design halfway", "Architect was fired", "Kevin climbs scaffolding", 
+            "Family living in a caravan", "Exotic materials from another country", "Project completion pushed to 'next year'", 
+            "Design is inspired by nature", "Budget increased unexpectedly", "House built on impossible terrain", 
+            "Owner mentions their 'dream home'", "Project manager left mid-project", "Kevin makes a sarcastic remark", 
+            "Feature wall with unusual materials", "Roof problems delay the project", "Self-building hero", 
+            "Divorce mid-construction", "Multiple visits to suppliers", "Owner mentions 'sustainability'", 
+            "Overambitious deadline", "Living in temporary accommodation for over a year", "Architect blames the client", 
+            "Bespoke kitchen fitting goes wrong", "Kevin wears a hard hat", "Ran out of money for landscaping", 
+            "No running water at the end", "Children say they'll miss their current home", "Neighbours aren't happy", 
+            "Sudden change in family circumstances", "Downsized furniture budget", "Roof is leaking", 
+            "Kevin predicts delays", "Hidden costs discovered", "Custom-made windows are delayed", 
+            "Kevin says, 'I'm not sure it will work'", "Wildlife or environmental concerns", "Owner becomes their own project manager", 
+            "Show-stopping staircase", "Kevin visits during the worst possible weather", "Creative financing or borrowing", 
+            "Spiral staircase added to design", "A custom pool or water feature", "Kevin points out poor insulation", 
+            "The house is compared to a bunker or spaceship", "Supplier goes out of business", "Delayed shipment of key materials", 
+            "Innovative eco-friendly solutions", 
+            "Complicated structural engineering", "Kevin questions the owner's sanity", "Had to switch builders", 
+            "Owner ran out of materials", "Garden design added at the last minute", "Neighbor threatens legal action", 
+            "Exotic wood feature wall", "Major redesign during construction", "Owners constantly bickering", 
+            "Kevin doubts the project will be finished on time", "Feature window doesn't fit", "Had to raise the ceiling", 
+            "Switched to cheaper materials", "Plumbing or electrical problems", "Kevin highlights expensive mistakes", 
+            "Owner gets emotional about delays", "Owner insists on doing the interior work themselves", 
+            "Major part of the build has to be redone", "Kevin compares the house to a cathedral", 
+            "Materials sourced from three different countries", "Unusual shaped windows", "Owner claims it's a 'passion project'", 
+            "Special glass used for insulation", "Compromise on energy-saving solutions", "Kevin interviews skeptical neighbors", 
+            "The building site floods", "Custom lighting system fails", "Owner goes on a rant about rising costs"
+        ];
+
+
+
+        let bingoGrid = [];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateBingoCard() {
+            const size = parseInt(document.getElementById("size").value);
+            if (isNaN(size) || size < 5 || size > 10) {
+                alert("Please enter a valid size between 5 and 10.");
+                return;
+            }
+
+            if (size * size > values.length) {
+                alert("Not enough unique values to fill the card. Please increase the size or add more values.");
+                return;
+            }
+
+            const shuffledValues = shuffleArray([...values]);
+            const cardValues = shuffledValues.slice(0, size * size);
+            const bingoContainer = document.getElementById("bingoContainer");
+
+            bingoContainer.innerHTML = ''; // Clear previous card
+            document.getElementById("winnerMessage").innerText = ''; // Clear winner message
+
+            const card = document.createElement("div");
+            card.className = "bingo-card";
+            card.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+            bingoGrid = []; // Clear the previous grid state
+
+            cardValues.forEach((value, index) => {
+                const row = Math.floor(index / size);
+                const col = index % size;
+
+                if (!bingoGrid[row]) {
+                    bingoGrid[row] = [];
+                }
+
+                const button = document.createElement("button");
+                button.className = "bingo-button";
+                button.textContent = value;
+
+                // Track the button state
+                button.onclick = function () {
+                    this.classList.toggle("marked");
+                    bingoGrid[row][col] = this.classList.contains("marked");
+                    checkForWinner(size);
+                };
+
+                card.appendChild(button);
+                bingoGrid[row][col] = false; // Set initial state as unmarked
+            });
+
+            bingoContainer.appendChild(card);
+        }
+
+        function checkForWinner(size) {
+            // Check rows
+            for (let i = 0; i < size; i++) {
+                if (bingoGrid[i].every(cell => cell)) {
+                    declareWinner();
+                    return;
+                }
+            }
+
+            // Check columns
+            for (let col = 0; col < size; col++) {
+                let columnComplete = true;
+                for (let row = 0; row < size; row++) {
+                    if (!bingoGrid[row][col]) {
+                        columnComplete = false;
+                        break;
+                    }
+                }
+                if (columnComplete) {
+                    declareWinner();
+                    return;
+                }
+            }
+
+            // Check diagonals
+            let diagonal1Complete = true;
+            let diagonal2Complete = true;
+            for (let i = 0; i < size; i++) {
+                if (!bingoGrid[i][i]) {
+                    diagonal1Complete = false;
+                }
+                if (!bingoGrid[i][size - i - 1]) {
+                    diagonal2Complete = false;
+                }
+            }
+            if (diagonal1Complete || diagonal2Complete) {
+                declareWinner();
+                return;
+            }
+        }
+
+        function declareWinner() {
+            document.getElementById("winnerMessage").innerText = "Winner!";
+        }
+
+        // Generate an initial card on page load
+        window.onload = generateBingoCard;
+    </script>
+</body>
+
+</html>
