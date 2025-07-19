@@ -1,0 +1,70 @@
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://travispooley.com/</id>
+ <title>Travis Pooley</title>
+  <subtitle>Hi I'm Travis, I break things on purpose, automate what I can, and share the rest. Welcome to my portfolio of technical mischief.</subtitle>
+  <updated>2025-07-19T20:15:52+09:30</updated>
+  <author>
+    <name>Travis Pooley</name>
+    <uri>https://travispooley.com/</uri>
+  </author>
+<link rel="self" type="application/atom+xml" href="https://travispooley.com/feed.xml"/>
+<link rel="alternate" type="text/html" hreflang="en"
+    href="https://travispooley.com/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 Travis Pooley </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+  <entry>
+   <title>Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</title>
+  <link href="https://travispooley.com/blog/gym/" rel="alternate" type="text/html" title="Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus" />
+   <published>2025-04-04T12:00:00+09:30</published>
+    <updated>2025-04-04T12:00:00+09:30</updated>
+    <id>https://travispooley.com/blog/gym/</id>
+    <content type="text/html" src="https://travispooley.com/blog/gym/" />
+    <author>
+      <name>Travis Pooley</name>
+    </author>
+    <category term="Project" />
+  <summary>Exploring how I built a Prometheus exporter to track live attendance at my local gym. From data scraping to trend analysis, here’s how I turned raw numbers into actionable insights.</summary>
+  </entry>
+  <entry>
+   <title>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</title>
+  <link href="https://travispooley.com/blog/rtsp/" rel="alternate" type="text/html" title="Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation" />
+   <published>2025-04-04T12:00:00+09:30</published>
+    <updated>2025-04-04T12:00:00+09:30</updated>
+    <id>https://travispooley.com/blog/rtsp/</id>
+    <content type="text/html" src="https://travispooley.com/blog/rtsp/" />
+    <author>
+      <name>Travis Pooley</name>
+    </author>
+    <category term="Project" />
+  <summary>RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing</summary>
+  </entry>
+  <entry>
+   <title>Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</title>
+  <link href="https://travispooley.com/blog/steam-bot/" rel="alternate" type="text/html" title="Automated Trading: How 500 Lines of JavaScript Funded My Steam Library" />
+   <published>2021-08-15T00:00:00+09:30</published>
+    <updated>2021-08-15T00:00:00+09:30</updated>
+    <id>https://travispooley.com/blog/steam-bot/</id>
+    <content type="text/html" src="https://travispooley.com/blog/steam-bot/" />
+    <author>
+      <name>Travis Pooley</name>
+    </author>
+    <category term="Project" />
+  <summary>The story of my automated arbitrage bot that funded every game I’ve purchased for years. Discover how automation powered my Steam collection and how you can too.</summary>
+  </entry>
+  <entry>
+   <title>Automated Luck: How My Twitter Bot Won Contests While I Slept</title>
+  <link href="https://travispooley.com/blog/twitter/" rel="alternate" type="text/html" title="Automated Luck: How My Twitter Bot Won Contests While I Slept" />
+   <published>2018-06-15T12:00:00+09:30</published>
+    <updated>2018-06-15T12:00:00+09:30</updated>
+    <id>https://travispooley.com/blog/twitter/</id>
+    <content type="text/html" src="https://travispooley.com/blog/twitter/" />
+    <author>
+      <name>Travis Pooley</name>
+    </author>
+    <category term="Project" />
+  <summary>Winning Twitter contests through code - building a bot to win prizes, mastering APIs, and learning Python. Here&amp;#39;s what I gained from a year of algorithmic luck.</summary>
+  </entry>
+</feed>

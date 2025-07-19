@@ -1,0 +1,21 @@
+
+{
+  "name": "Travis Pooley",
+  "short_name": "Travis Pooley",
+  "description": "Hi I'm Travis, I break things on purpose, automate what I can, and share the rest. Welcome to my portfolio of technical mischief.",
+  "icons": [
+    {
+      "src": "/assets/img/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "theme_color": "#2a1e6b",
+  "background_color": "#ffffff",
+  "display": "fullscreen"
+}

@@ -1,0 +1,832 @@
+<!doctype html>
+<script src="/assets/js/custom/sidebar-toggle.js"></script>
+<html lang="en" >
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+ <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  >
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Automated Luck: How My Twitter Bot Won Contests While I Slept" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Winning Twitter contests through code - building a bot to win prizes, mastering APIs, and learning Python. Here’s what I gained from a year of algorithmic luck." />
+<meta property="og:description" content="Winning Twitter contests through code - building a bot to win prizes, mastering APIs, and learning Python. Here’s what I gained from a year of algorithmic luck." />
+<link rel="canonical" href="https://travispooley.com/blog/twitter/" />
+<meta property="og:url" content="https://travispooley.com/blog/twitter/" />
+<meta property="og:site_name" content="Travis Pooley" />
+<meta property="og:image" content="https://travispooley.com/assets/images/twitter/twitter.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-15T12:00:00+09:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://travispooley.com/assets/images/twitter/twitter.jpg" />
+<meta property="twitter:title" content="Automated Luck: How My Twitter Bot Won Contests While I Slept" />
+<meta name="twitter:site" content="@travispooley" />
+<meta name="google-site-verification" content="f02O3VZopgRRCh11WVAYFg7u8JqoCK5JUkV8v7RVTVs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2018-06-15T12:00:00+09:30","datePublished":"2018-06-15T12:00:00+09:30","description":"Winning Twitter contests through code - building a bot to win prizes, mastering APIs, and learning Python. Here’s what I gained from a year of algorithmic luck.","headline":"Automated Luck: How My Twitter Bot Won Contests While I Slept","image":"https://travispooley.com/assets/images/twitter/twitter.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/blog/twitter/"},"url":"https://travispooley.com/blog/twitter/"}</script>
+ <title>Automated Luck: How My Twitter Bot Won Contests While I Slept | Travis Pooley
+ </title>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Travis Pooley">
+<meta name="application-name" content="Travis Pooley">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+  <script src="/assets/js/dist/theme.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZJGB7Q1Y9"></script>
+<script>
+  /* global dataLayer */
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3ZJGB7Q1Y9');
+</script>
+ <body>
+<div class="nx-topbar-wrapper" id="topbar">
+ <div class="nx-topbar">
+   <div class="nx-container">
+     <div class="nx-logo">
+        <a href="/">Travis Pooley</a>
+     </div>
+     <nav class="nx-nav">
+       <ul>
+         <li><a href="/">Home</a>
+         <li><a href="/#about">About</a>
+         <li><a href="/#experience">Experience</a>
+         <li><a href="/books">Books</a>
+         <li><a href="/blog">Blog</a>
+       </ul>
+     </nav>
+     <div class="nx-actions">
+        <button id="topbar-theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+           <line x1="12" y1="1" x2="12" y2="3"></line>
+           <line x1="12" y1="21" x2="12" y2="23"></line>
+           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+           <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+           <line x1="1" y1="12" x2="3" y2="12"></line>
+           <line x1="21" y1="12" x2="23" y2="12"></line>
+           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="/#contact" class="nx-button primary">Contact</a>
+     </div>
+   </div>
+ </div>
+</div>
+<style>
+/* CSS for the top menu bar with dark/light mode support */
+:root {
+  --nx-primary: #0066FF;
+}
+.nx-topbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.nx-topbar {
+  width: 100%;
+  max-width: 1250px;
+  padding: 10px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Light mode styles (default) */
+.nx-topbar {
+  background: var(--main-bg);
+}
+.nx-logo a {
+  color: var(--heading-color);
+}
+.nx-nav a {
+  color: var(--heading-color);
+}
+.theme-toggle {
+  color: var(--heading-color);
+}
+.nx-container {
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nx-logo a {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.nx-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nx-nav li {
+  margin: 0 15px;
+  position: relative;
+}
+.nx-nav a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nx-nav a:hover {
+  opacity: 0.8;
+}
+.nx-actions {
+  display: flex;
+  align-items: center;
+}
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+body.dark-theme .theme-toggle:hover,
+body[data-mode="dark"] .theme-toggle:hover,
+html[data-mode="dark"] .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+  display: none;
+}
+.nx-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nx-button.primary {
+  background-color: var(--nx-primary);
+  color: white;
+}
+.nx-button.primary:hover {
+  filter: brightness(1.1);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nx-nav {
+    display: none;
+  }
+  .nx-container {
+    justify-content: space-between;
+  }
+}
+</style>
+<script>
+// This script forwards the click event from our theme toggle to Chirpy's theme toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const topbarThemeToggle = document.getElementById('topbar-theme-toggle');
+  const chirpyThemeToggle = document.getElementById('mode-toggle');
+  // Function to check if current theme is dark
+  function isDarkTheme() {
+    // Check for body background color
+    const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+    const bodyBgVar = getComputedStyle(document.body).getPropertyValue('--main-bg').trim();
+    // Convert background color to hex or check variable value
+    let isDark = false;
+    // If the body has a background color matching #1b1b1e (or similar dark color)
+    if (bodyBg) {
+      const rgb = bodyBg.match(/\d+/g);
+      if (rgb && rgb.length >= 3) {
+        // Check if it's a dark color (rough approximation)
+        isDark = (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2])) / 3 < 128;
+      }
+    }
+    // If the CSS variable --main-bg is set to #1b1b1e
+    if (bodyBgVar === '#1b1b1e') {
+      isDark = true;
+    }
+    // Additional checks for theme indicators
+    isDark = isDark || 
+             document.body.classList.contains('dark-theme') || 
+             document.body.getAttribute('data-mode') === 'dark' ||
+             document.documentElement.getAttribute('data-mode') === 'dark';
+    return isDark;
+  }
+  // Function to update theme icon based on current theme
+  function updateThemeIcon() {
+    if (!topbarThemeToggle) return;
+    const sunIcon = topbarThemeToggle.querySelector('.sun-icon');
+    const moonIcon = topbarThemeToggle.querySelector('.moon-icon');
+    const dark = isDarkTheme();
+    // In dark mode, show sun icon (to switch to light)
+    if (dark) {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    } 
+    // In light mode, show moon icon (to switch to dark)
+    else {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+  }
+  // Set up click event
+  if (topbarThemeToggle && chirpyThemeToggle) {
+    topbarThemeToggle.addEventListener('click', () => {
+      // Trigger a click on Chirpy's theme toggle button
+      chirpyThemeToggle.click();
+      // Wait a moment for the theme to change, then update icon
+      setTimeout(updateThemeIcon, 100);
+    });
+  }
+  // Set icon state on initial load
+  updateThemeIcon();
+  // Watch for theme changes on body element
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(() => {
+      updateThemeIcon();
+    });
+  });
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class', 'data-mode', 'style']
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-mode', 'class']
+  });
+  // Check periodically as well
+  setInterval(updateThemeIcon, 1000);
+});
+</script>
+<aside aria-label="Sidebar" id="sidebar" class="d-none flex-column align-items-end">
+<header class="profile-wrapper">
+    <a class="site-title d-block" href="/">Travis Pooley</a>
+ </header>
+ <nav class="flex-column flex-grow-1 w-100 ps-0">
+   <ul class="nav">
+     <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>HOME</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#about" class="nav-link">
+          <i class="fa-fw fas fa-circle-info"></i>
+          <span>About Me</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#experience" class="nav-link">
+          <i class="fa-fw fas fa-user-tie"></i>
+          <span>Experience</span>
+        </a>
+     <li class="nav-item">
+        <a href="/books/" class="nav-link">
+          <i class="fa-fw fas fa-book"></i>
+          <span>Books</span>
+        </a>
+     <li class="nav-item">
+        <a href="/blog/" class="nav-link">
+          <i class="fa-fw fas fa-newspaper"></i>
+          <span>Blog</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#contact" class="nav-link">
+          <i class="fa-fw fas fa-envelope"></i>
+          <span>Contact</span>
+        </a>
+   </ul>
+ </nav>
+ <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+        <span class="icon-border"></span>
+        <a
+          href="https://github.com/travispooley"
+          aria-label="github"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://twitter.com/travispooley"
+          aria-label="twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a
+          href="javascript:location.href = 'mailto:' + ['travispooley','gmail.com'].join('@')"
+          aria-label="email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="/feed.xml"
+          aria-label="rss"
+        >
+          <i class="fas fa-rss"></i>
+        </a>
+ </div>
+</aside>
+   <div id="main-wrapper" class="d-flex justify-content-center">
+     <div class="container d-flex flex-column px-xxl-5">
+<header id="topbar-wrapper" class="flex-shrink-0" aria-label="Top Bar">
+ <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+   <nav id="breadcrumb" aria-label="Breadcrumb"><span>
+              <a href="/">Home</a>
+            </span><span><a href="/blog/">
+                  Blog
+                </a></span><span>Automated Luck: How My Twitter Bot Won Contests While I Slept</span></nav>
+    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+   <div id="topbar-title">Post</div>
+    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button>
+ </div>
+</header>
+       <div class="row flex-grow-1">
+         <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+<article class="px-1" data-toc="true">
+<header>
+   <h1 data-toc-skip>Automated Luck: How My Twitter Bot Won Contests While I Slept</h1><p class="post-desc fw-light mb-4">Winning Twitter contests through code - building a bot to win prizes, mastering APIs, and learning Python. Here's what I gained from a year of algorithmic luck.</p><div class="post-meta text-muted">
+      <span>
+        Posted
+<time
+  data-ts="1529029800"
+  data-df="ll"
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+>
+  Jun 15, 2018
+</time>
+</span>
+     <div class="mt-3 mb-3">
+          <a href="/assets/images/twitter/twitter.jpg" class="popup img-link preview-img shimmer"><img src="/assets/images/twitter/twitter.jpg"  alt="Preview Image" width="1200" height="630"  loading="lazy"></a></div><div class="d-flex justify-content-between">
+        <span>By
+          <em><a href="https://twitter.com/travispooley">Travis Pooley</a></em>
+        </span>
+       <div>
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="3812 words"
+>
+  <em>21 min</em> read</span>
+</div>
+     </div>
+   </div>
+ </header><div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Automated Luck: How My Twitter Bot Won Contests While I Slept</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+   </div>
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+    <dialog id="toc-popup" class="p-0">
+     <div class="header d-flex flex-row align-items-center justify-content-between">
+       <div class="label text-truncate py-2 ms-4">Automated Luck: How My Twitter Bot Won Contests While I Slept</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+     </div>
+     <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog><div class="content">
+   <h2 id="the-inspiration"><span class="me-2">The Inspiration</span><a href="#the-inspiration" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>A few years ago, I stumbled upon Hunter Scott’s fascinating DEF CON 24 talk titled “<a href="https://www.youtube.com/watch?v=iAOOdYsK7MM">RT to Win: 50 Lines of Python Made Me the Luckiest Guy on Twitter</a>”. The concept was brilliantly simple yet remarkably effective: create a bot that automatically finds and enters Twitter giveaways.</p>
+<p>Scott’s experiment ran for about 9 months, entered approximately 165,000 contests, and won nearly 1,000 prizes. His haul included everything from concert tickets to a trip to New York Fashion Week, and even unusual items like a cowboy hat signed by the cast of a Mexican soap opera.</p>
+<p>Intrigued by both the technical simplicity and potential rewards, I decided to build my own version.</p>
+<h2 id="learning-through-building"><span class="me-2">Learning Through Building</span><a href="#learning-through-building" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>What makes this project even more significant for me personally is that before starting this project I had zero experience with Python, web scraping, or databases. I intentionally chose this project as a vehicle to learn these skills with a clear, motivating goal in mind.</p>
+<p>This approach of learning by building real projects with concrete outcomes has been my go-to method for acquiring new programming skills. By tackling projects that genuinely interest me, I’ve successfully learned a dozen different programming languages and technologies over the years.</p>
+<p>There’s something uniquely effective about having a tangible end goal that keeps you pushing through the inevitable challenges and roadblocks. When you’re excited about what you’re building, debugging becomes a puzzle to solve rather than a chore, and each new concept has immediate practical application.</p>
+<p>The contest bot provided perfect scaffolding for learning:</p>
+<ul>
+ <li>Python fundamentals through practical application
+ <li>API integration via Twitter’s interface
+ <li>Database design and management
+ <li>Web development through the PHP dashboard
+</ul>
+<p>This project-first approach to learning accelerated my skills acquisition far beyond what traditional tutorials or courses could have accomplished in the same timeframe.</p>
+<h2 id="open-source-with-strategic-limitations"><span class="me-2">Open Source (With Strategic Limitations)</span><a href="#open-source-with-strategic-limitations" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>For those interested in creating their own contest bot, I’ve made a version of my code available on GitHub. However, I should note a few important caveats:</p>
+<p>This was my first time using Python and my first foray into functional programming, so the code is… let’s say “less than ideal.” It serves as a genuine chronicle of my learning process, complete with all the quirks and inefficiencies of a beginner.</p>
+<p>The version I uploaded isn’t actually my most sophisticated iteration. As Twitter began cracking down on bots, I became less concerned about other people starting competing bots and more focused on maintaining my own statistical advantage. Many of the features mentioned in this article as either implemented or roadmap items were actually built into more advanced versions that I never made public.</p>
+<p>Consider the GitHub repository a foundation to build upon rather than a polished product. The real value came from the iterations and improvements I made over time as I learned more about Python, Twitter’s API, and bot detection mechanisms.</p>
+<p>By keeping my most effective techniques private, I maintained the statistical edge that made this project so successful. After all, the fewer contest bots in operation, the better my chances of winning remained!</p>
+<h2 id="how-it-works"><span class="me-2">How It Works</span><a href="#how-it-works" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>The functionality is straightforward:</p>
+<ol>
+ <li>Search Twitter for contest-related keywords like “retweet to win,” “RT to win,” “contest,” “giveaway”
+ <li>Filter results to only include tweets that can be entered on the Twitter platform (request retweets for entry)
+ <li>Follow accounts when required as part of the contest rules
+ <li>Automatically retweet qualifying tweets
+ <li>Track entries and wins for data analysis
+ <li>Manage follows/unfollows to stay within Twitter’s limits
+ <li>Repeat the process at regular intervals
+</ol>
+<p>I also implemented some additional features based on Scotts bot. To prevent getting banned by Twitter, I had to carefully manage rate limits. Twitter restricts how often you can tweet, retweet, and follow/unfollow accounts. Since most contests required following the original poster, I implemented a FIFO (First In, First Out) queue to ensure I was only following the 2,000 most recent contest entries (staying well within Twitter’s following limits).</p>
+<h2 id="reaching-the-limits"><span class="me-2">Reaching The Limits</span><a href="#reaching-the-limits" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Working with Tweepy v3.6.0, I quickly discovered how Twitter’s API rate limits became the central challenge for my giveaway bot. These limits were surprisingly restrictive, approximately 300 retweets per day, 1,000 likes per day and 400 follows per day. For searching arguably the most important functio of my bot, I was constrained to just 180 search requests per 15-minute window.</p>
+<p>Let’s break down what this meant for my bot’s theoretical maximum capacity: Each search could return up to 180 tweets, letting me scan about ~15,480 tweets daily. However, after filtering for actual giveaways (roughly 5% of tweets contained legitimate contests), I could potentially find about 774 giveaway opportunities daily. Unfortunately, I couldn’t enter them all due to the action limits. The retweet limit of 300 per day became my primary bottleneck, essentially capping my daily entries regardless of how many more contests I discovered.</p>
+<p>Given these constraints I optimised what I could, the search API was my most significant constraint that I had control over, like Scott I pivoted to using BeautifulSoup for web scraping Twitter’s interface directly. This approach completely bypassed the search API limits, allowing me to discover substantially more giveaways without hitting the rate limits that restricted my searches. The bot could now crawl Twitter’s web interface continuously, finding thousands of additional contest opportunities that would have been missed using the API alone. This innovation shifted my bottleneck entirely from discovery to action limits (retweets, likes, follows).</p>
+<p>The real breakthrough came when I moved away from basic searching functions to a more sophisticated architecture that saved discovered contests into a central SQLITE database. This allowed multiple bot accounts to share the same pool of discovered giveaways, effectively multiplying my entry capacity without increasing the computational overhead of search operations. Rather than each account wastefully duplicating the same search queries, one efficient scraping process could feed contest opportunities to an entire network of bots.</p>
+<p>Just using two accounts would theoretically double the number of entries I could perform daily, from 300 to 600 retweets. By the end of the project, I had over half a dozen bots operating at any given time, each capable of the full 300 daily retweets whilst drawing from the same centralised contest database.</p>
+<h2 id="finding-hidden-gems-the-statistical-edge"><span class="me-2">Finding Hidden Gems: The Statistical Edge</span><a href="#finding-hidden-gems-the-statistical-edge" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Unlike Scott, who believes he reached a scale where he was entering virtually every Twitter contest available, my operation was more modest. However, this led to an interesting discovery: my bot was finding giveaways that seemingly no one else was discovering.</p>
+<p>This created a significant statistical advantage. When a poorly advertised giveaway had only a handful public entries, and I had multiple bot accounts all running the same search queries, my chances of winning skyrocketed. This scenario played out numerous times. For example one brand, was giving away iTunes gift cards every month. Across my various accounts, I won 5 of their monthly giveaways because so few people even knew they existed.</p>
+<p><a href="/assets/images/twitter/twitter-bot-ituneswins-lightmode.webp" class="popup img-link light rounded-10 shimmer"><img src="/assets/images/twitter/twitter-bot-ituneswins-lightmode.webp" alt="light mode only"  style="max-height:700px; width:auto;" loading="lazy"></a>
+<a href="/assets/images/twitter/twitter-bot-ituneswins-darkmode.webp" class="popup img-link dark rounded-10 shimmer"><img src="/assets/images/twitter/twitter-bot-ituneswins-darkmode.webp" alt="dark mode only"  style="max-height:700px; width:auto;" loading="lazy"></a>
+<em>The Itunes giveaway that my bot won consistently (my accounts censored in green other accounts that won in red)</em></p>
+<p>The majority of the items I won were obtained through statistical means, such as entering contests multiple times and discovering giveaways that were not attracting large crowds. I essentially discovered a sweet spot.</p>
+<p>That’s not to say I only won the obscure contests. One of my most memorable wins was a copy of the game Rust in a giveaway where my odds of winning were under 2%. This was one of those cases where I would have entered manually if I had known about it, and I was thrilled when my bot managed to beat the odds.</p>
+<p><a href="/assets/images/twitter/rust_win_lightmode.webp" class="popup img-link light rounded-10 shimmer"><img src="/assets/images/twitter/rust_win_lightmode.webp" alt="light mode only"  style="max-height:400px; width:auto;" loading="lazy"></a>
+<a href="/assets/images/twitter/rust_win_darkmode.webp" class="popup img-link dark rounded-10 shimmer"><img src="/assets/images/twitter/rust_win_darkmode.webp" alt="dark mode only"  style="max-height:400px; width:auto;" loading="lazy"></a>
+<em>The announcement of the winner of the rust giveaway</em></p>
+<h2 id="blending-in"><span class="me-2">Blending In</span><a href="#blending-in" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Another way my bot differed, was unlike Scott’s approach of using generic Windows stock photos and minimal profile details (the username “HS” with the description “I’m up all night to get lucky”), I discovered that creating memorable, meme-based personas significantly improved my bot’s perceived legitimacy.</p>
+<p>My primary bot account was named “The_L3gend27”, a leet-speak version of the <a href="https://knowyourmeme.com/memes/thelegend27">popular mobile gaming meme from 2016 TheLegend27</a> (the original TheLegend27 username was already taken). This reference to a well-known meme gave my account an immediate cultural context that appeared more authentic than generic or randomly generated names.</p>
+<p>I took advantage of one of the most common prizes I won (free graphic design work) to further enhance my profile’s legitimacy. When artists offered banners or profile graphics as giveaway prizes, I would claim them and immediately implement them on my bot accounts. This created a positive feedback loop: winning design giveaways provided me with professional-looking profile elements, which in turn made my accounts look more legitimate for future contests.</p>
+<p><a href="/assets/images/twitter/banner.png" class="popup img-link  shimmer"><img src="/assets/images/twitter/banner.png" alt="Profile of my primary bot, with banner art won by the bot" loading="lazy"></a>
+<em>Profile of my primary bot, with banner art won by the bot</em></p>
+<p>This strategy paid dividends in unexpected ways. Several contest hosts specifically mentioned recognising my distinctive username when announcing me as a winner. For manually selected giveaways (where hosts weren’t using random selection tools), having a memorable, recognizable name likely increased my chances significantly. The lengthy, distinctive “The_L3gend27” was more likely to catch a host’s eye than forgettable generic usernames.</p>
+<p><a href="/assets/images/twitter/xm_win_lightmode.webp" class="popup img-link light rounded-10 shimmer"><img src="/assets/images/twitter/xm_win_lightmode.webp" alt="light mode only"  style="max-height:900px; width:auto;" loading="lazy"></a>
+<a href="/assets/images/twitter/xm_win_darkmode.webp" class="popup img-link dark rounded-10 shimmer"><img src="/assets/images/twitter/xm_win_darkmode.webp" alt="dark mode only"  style="max-height:900px; width:auto;" loading="lazy"></a>
+<em>Host of a giveaway making reference to The Legend27 meme</em></p>
+<h2 id="what-qualified-as-a-giveaway"><span class="me-2">What Qualified as a Giveaway</span><a href="#what-qualified-as-a-giveaway" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>One of the most critical challenges in optimising my Twitter contest bot was accurately identifying legitimate giveaways while filtering out false positives. With Twitter’s strict rate limits constraining me to just 300 retweets per day, 1,000 likes per day, and 400 follows per day, every action had to count towards genuine contest opportunities.</p>
+<p>I developed a multi-layered filtering system based on pattern recognition and probabilistic scoring. Each discovered tweet received a “giveaway probability score” calculated from multiple weighted signals that determined whether it warranted one of my precious daily actions.</p>
+<p>The first layer involved sophisticated keyword filtering that went far beyond simplistic string matching. Many tweets contained phrases like “I just retweeted John Smith’s post I hope I win”, which would trigger basic bots despite not being actual contests. My system required multiple giveaway-specific keywords to appear in logical relationships to each other, such as “retweet AND win” or “RT AND giveaway”, with additional context clues like prize descriptions or entry deadlines.</p>
+<p>Most critically, I implemented social action requirements as a key qualifying factor. Since the vast majority of legitimate Twitter giveaways aimed to increase follower counts and engagement metrics, I prioritised contests that explicitly requested following the host account alongside retweets or likes. This single filter dramatically improved my success rate by eliminating noise while focusing on contests where my entry would be properly tracked by the host.</p>
+<p>The filtering strategy inevitably meant missing some valid giveaways that didn’t match my strict criteria. However, given Twitter’s fundamental rate limit constraints, attempting to enter every possible contest was mathematically impossible. The platform’s restrictions forced a strategic choice: scatter limited actions across uncertain prospects, or concentrate them on high-probability targets.</p>
+<p>Quality over quantity proved to be the optimal approach. Rather than wasting precious daily actions on ambiguous tweets, I focused my constrained resources on contests with the highest legitimacy probability and prize. This targeted strategy maximised both my win rate and the overall value of prizes claimed.</p>
+<h2 id="automating-the-collection"><span class="me-2">Automating the Collection</span><a href="#automating-the-collection" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Winning dozens of digital prizes weekly created an unexpected problem: claiming all these rewards became a significant time sink. Interacting with contest hosts, providing platform information, or submitting game details manually for each win quickly became unsustainable.</p>
+<p>I developed a solution born from necessity: automated prize collection. My bot monitored direct messages for specific patterns and keywords that indicated I had won something, then automatically responded with appropriate information. For digital prizes (which made up most of my winnings), this system was particularly effective. When the bot detected messages containing phrases like “trade link”, it would automatically reply with pre-formatted responses containing my relevant platform information.</p>
+<p>Another critical reason for implementing this automation was the time-sensitive nature of many giveaways. Numerous contest hosts would give winners only 30 minutes to respond before redrawing. Living in Australia meant I was often asleep when these messages arrived. A 3 AM notification meant I’d frequently miss out on prizes I’d legitimately won. The automated response system solved this problem entirely, ensuring I could claim prizes regardless of time zone differences.</p>
+<p>This automation meant that digital prizes like game keys, in-game items, and account credentials flowed in without any manual intervention,  I’d simply check my accounts periodically to find new items waiting.</p>
+<p>However, the system wasn’t flawless. Occasionally, users would inadvertently trigger the automated responses during normal conversations, leading to some genuinely confusing moments. Someone might casually mention a “trade link” or use other trigger phrases in context, only to receive an unexpected automated response containing my Steam trade link. These incidents were typically brushed off after a confused “huh?” response, and most people seemed to either ignore the oddity. Fortunately, I never encountered anyone who discovered the trigger phrases and deliberately exploited them repeatedly, a very real risk that could have made the bot’s automated nature embarrassingly obvious to the broader Twitter community.</p>
+<h2 id="combating-the-bot-spotters"><span class="me-2">Combating the Bot Spotters</span><a href="#combating-the-bot-spotters" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Another fascinating discovery during this project was the existence of “bot spotters”. These are accounts specifically designed to catch and expose contest bots like mine. These accounts, often named something like “bot_spotter” or using variations with leet speak (b0t_sp0tt3r), would cleverly tweet contest-like phrases containing all the keywords our bots look for.</p>
+<p><a href="/assets/images/twitter/bot-spotters.png" class="popup img-link rounded-10 shimmer"><img src="/assets/images/twitter/bot-spotters.png" alt="Screenshot of my bot falling for bot spotting accounts"  style="max-height:700px; width:auto;" loading="lazy"></a>
+<em>An early itteration of my bot falling for bot spotting accounts</em></p>
+<p>To counteract this, I implemented several protective measures:</p>
+<p>I developed a multi-pronged detection system that monitored accounts for suspicious patterns. The first layer involved scanning usernames for variations of “bot,” “spotter,” “sp0tter,” and similar terms that these accounts typically used. However, username filtering alone wasn’t sufficient, as some bot spotters used completely innocuous names.</p>
+<p>The second layer tracked giveaway frequency patterns. My system maintained a database of how many “contests” each account had posted over various time periods. Any account exceeding predetermined thresholds such as posting more than five giveaways in a single day or twenty in a week, would trigger automatic blocking. Legitimate brands and influencers rarely posted contests with such frequency, making this an effective filter.</p>
+<p>When these thresholds were breached, the offending accounts entered a quarantine system. Rather than permanently blocking potentially legitimate accounts, suspicious users remained in quarantine until I could manually review and verify them. This prevented false positives while maintaining protection against bot spotters who might attempt to evade detection by changing usernames or tactics.</p>
+<p>This “arms race” between bots and bot spotters added an unexpected but fascinating dimension to the project!</p>
+<h2 id="the-dark-side-of-twitter-contests"><span class="me-2">The Dark Side of Twitter Contests</span><a href="#the-dark-side-of-twitter-contests" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Running this bot revealed a troubling reality: a large portion of the contests I “won” had sinister surroundings.</p>
+<p>The most common scam I encountered involved “winners” being told they needed to pay small “delivery fees” to claim extravagant prizes like gaming consoles or smartphones. These scammers operated on a simple principle: the excitement of winning something valuable would cloud the winner’s judgment enough to overlook the red flag of paying a fee.</p>
+<p>These delivery fee scams were just the tip of the iceberg. Other common patterns included:</p>
+<ul>
+ <li>Contest hosts who never actually delivered prizes or responded to winners once they made contact
+ <li>Accounts running perpetual contests to artificially inflate follower counts with no intention of ever giving anything away
+ <li>Sophisticated phishing schemes disguised as contest verification, designed primarily to harvest personal information, passwords, or credit card details
+ <li>Contests requiring excessive personal details for entry that were likely being compiled into marketing databases
+ <li>“Follow loops” where multiple accounts would cross-promote each other’s fake giveaways to rapidly build their follower base
+</ul>
+<p>Perhaps most concerning was the significant number of giveaways offering stolen goods as prizes. The most prevalent were stolen accounts for premium services like Netflix, Spotify, Minecraft, Steam, and other gaming platforms. These contests were essentially fencing operations disguised as generous giveaways.</p>
+<h2 id="becoming-a-tweepy-expert-and-giving-back"><span class="me-2">Becoming a Tweepy Expert and Giving Back</span><a href="#becoming-a-tweepy-expert-and-giving-back" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>After wrestling with the Tweepy library for many months to build and refine this project, I developed a deep understanding of Twitter’s API and the nuances of Tweepy. I encountered numerous challenges that had no clear solutions online, forcing me to dig deep into the documentation and experiment extensively.</p>
+<p>When searching for solutions to my own development challenges, I frequently encountered the same unanswered questions on Stack Overflow that had been plaguing other developers for months or even years. Remembering my own frustration when facing these roadblocks with no available solutions, I decided to become the kind of Stack Overflow contributor I wished I’d found during my development process.</p>
+<p>I focused particularly on Tweepy-related questions that mirrored the exact challenges I had wrestled with during development. These ranged from basic searching and filtering techniques to more complex problems around cursor pagination and error handling issues that had little to no clear documentation or working examples available online. <a href="https://stackoverflow.com/search?q=user:9627710+[tweepy]">My Stack Overflow contributions</a> became a way of documenting the solutions I wished had existed when I was struggling through the same problems months earlier.</p>
+<p>Initially, I only responded to a few new questions, hoping those users would still be interested in a solution. The response was overwhelmingly positive, and I found myself enjoying the process of helping others overcome the same hurdles I had faced. This unexpected side effect of the project led to me climbing into the top percentage of Stack Overflow users for a period, which was a rewarding achievement in itself.</p>
+<h2 id="the-results"><span class="me-2">The Results</span><a href="#the-results" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>When I first launched my Twitter contest bot in January 2017, I was meticulous about tracking every single win, no matter how small. I quickly discovered that maintaining this list became a job in itself. After just over a month, I abandoned the formal tracking as the volume of wins (particularly low-value digital items) made it impractical to document everything.</p>
+<h3 id="my-one-month-haul"><span class="me-2">My One-Month Haul</span><a href="#my-one-month-haul" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>During that first month of careful record-keeping (January-February 2017), my bot managed to win <strong>75 prizes</strong> in just over 30 days. That averages to about 2.5 wins per day - not quite as prolific as Hunter Scott’s 4 per day, but surprisingly effective considering how primitive my system was at this stage.</p>
+<p>It’s important to note that during this initial period, my bot was extremely inefficient. It was still struggling with filtering out non-contest tweets and was entirely limited to Twitter’s cursor search functions, which would return a maximum of 180 tweets per query. Even worse, many of these returned tweets were duplicates, severely reducing my theoretical maximum discovery rate. The filtering algorithm was also quite basic at this point, frequently wasting precious retweet actions on false positives that weren’t actual contests.</p>
+<p>Looking at the categories of items won during this tracked period (the <a href="/assets/twitter-bot-win-list.txt">complete list of wins</a> provides the full details):</p>
+<ul>
+ <li><strong>Digital accounts/subscriptions</strong>: 20 items (26.7%) - including Netflix, Spotify, Minecraft, and Crunchyroll accounts
+ <li><strong>In-game items/currency</strong>: 19 items (25.3%) - CS:GO skins, Pokémon codes, game server ranks
+ <li><strong>Digital services</strong>: 12 items (16%) - banners, GFX designs, 3D intros
+ <li><strong>Cash/gift cards</strong>: 5 items (6.7%) - ranging from $0.03 PayPal to $15 iTunes cards
+ <li><strong>Physical items</strong>: 19 items (25.3%) - including gaming hardware, clothes, collectables, and kitchenwear
+</ul>
+<p>Unlike Scott, who tracked every win over his 9-month project and published a complete <a href="http://hscott.net/winnings.txt">list of winnings</a>, my tracking dropped off precisely because the volume became unmanageable alongside my other responsibilities. In hindsight, this was a missed opportunity for more comprehensive data analysis.</p>
+<p>I would also go through the DMs to see what I won, but unfortunately, during Twitter’s crackdown on bots, many accounts were nuked, including my bot accounts and even those of my adversaries (those pesky bot spotters). That’s made finding evidence and media for this post particularly difficult (hence all the light mode screenshots - I’m sorry). However, whilst the accounts have been suspended, if you know where to look you can still find other people’s announcements of me winning their competitions using Twitter advanced searches like <a href="https://twitter.com/search?q=(congrat%20OR%20congratulations%20OR%20congrats)%20%22%40the_l3gend27%22&amp;src=typed_query&amp;f=top">this one</a>.</p>
+<h3 id="the-ethical-accounting"><span class="me-2">The Ethical Accounting</span><a href="#the-ethical-accounting" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>It’s worth noting that many of my “wins” were ethically questionable in retrospect. The digital accounts that comprised 30% of overall winnings were clearly compromised or stolen goods being redistributed through these contests. While I didn’t utilise these prizes, they represent a significant portion of the “value” generated by the bot.</p>
+<h3 id="discovery-and-exposure"><span class="me-2">Discovery and Exposure</span><a href="#discovery-and-exposure" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>In retrospect, it should have been extremely obvious that my account was a bot. My accounts like “The_L3gend27” were doing nothing but entering giveaways 24/7 with no apparent sleep schedule, posting no original content, and never engaging in normal social interactions. Despite my attempts to create a memorable persona, the behavioral patterns were a dead giveaway to anyone paying attention.</p>
+<p>I did get called out a few times, mostly via direct messages, but occasionally publicly. These public call-outs were particularly damaging because they would cause me to lose giveaways I would have otherwise won. Contest hosts who saw comments like “this is obviously a bot account” would often disqualify me even after initially announcing me as a winner.</p>
+<p><a href="/assets/images/twitter/bot_callout_lightmode.webp" class="popup img-link light rounded-10 shimmer"><img src="/assets/images/twitter/bot_callout_lightmode.webp" alt="light mode only"  style="max-height:900px; width:auto;" loading="lazy"></a>
+<a href="/assets/images/twitter/bot_callout_darkmode.webp" class="popup img-link dark rounded-10 shimmer"><img src="/assets/images/twitter/bot_callout_darkmode.webp" alt="dark mode only"  style="max-height:900px; width:auto;" loading="lazy"></a>
+<em>Eaxmple of public accusations of bot behavior that cost me several prizes</em></p>
+<p>Interestingly, I also received messages from users who had figured out a clever strategy: they used my account as a giveaway discovery service. Rather than building their own filtering systems, they would simply monitor my retweets to find active contests. This was actually brilliant - they shifted all the computational overhead of finding and filtering giveaways onto my bot while simultaneously degrading my odds of winning by increasing competition. They got a curated feed of legitimate giveaways without any of the development work, while I unknowingly provided them with a competitive advantage against my own operation.</p>
+<h2 id="conclusion"><span class="me-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Scott’s DEF CON talk demonstrated how a simple script could achieve impressive results through automation at scale. My implementation confirmed that the approach still worked years later, though Twitter’s landscape continued to evolve.</p>
+<p>The project perfectly illustrates how programming allows us to automate repetitive tasks, apply statistical advantages at scale, and occasionally win free stuff along the way. It also offers a fascinating glimpse into the ecosystem of online contests.</p>
+<p>Beyond the prizes, this project yielded unexpected benefits: it served as an effective vehicle for learning Python, web scraping, and database management from scratch. It reinforced my belief that project-based learning with clear goals is the fastest way to acquire new programming skills. The knowledge gained allowed me to contribute to the developer community and help others facing similar challenges.</p>
+<p>If you’re looking to learn a new programming language or technology, I strongly recommend finding a project that genuinely interests you and diving in. The motivation of building something real will carry you through the learning curve far more effectively than abstract tutorials ever could.</p>
+<p><em>Note: If you plan to create your own contest bot, be sure to review Twitter’s current Developer Policy and Terms of Service to ensure compliance.</em></p>
+<p><em>PS If you also ran or are running a Twitter giveaway bot, I’d love to hear about your experiences. Use the <a href="/#contact">contact link</a> to share your story!</em></p>
+ </div>
+ <div class="post-tail-wrapper text-muted">
+   <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i><a href="/categories/project/">Project</a></div><div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i><a
+            href="/tags/python/"
+            class="post-tag no-text-decoration"
+          >Python</a><a
+            href="/tags/automation/"
+            class="post-tag no-text-decoration"
+          >Automation</a></div><div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+     <div class="license-wrapper">This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a> by the author.</div>
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+      <a href="https://twitter.com/intent/tweet?text=Automated%20Luck:%20How%20My%20Twitter%20Bot%20Won%20Contests%20While%20I%20Slept%20-%20Travis%20Pooley&url=https%3A%2F%2Ftravispooley.com%2Fblog%2Ftwitter%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Automated%20Luck:%20How%20My%20Twitter%20Bot%20Won%20Contests%20While%20I%20Slept%20-%20Travis%20Pooley&u=https%3A%2F%2Ftravispooley.com%2Fblog%2Ftwitter%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftravispooley.com%2Fblog%2Ftwitter%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin" aria-label="Linkedin">
+        <i class="fa-fw fab fa-linkedin"></i>
+      </a>
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
+</div>
+ </div>
+</article>
+         </main>
+         <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+           <div class="access">
+ <section id="access-lastmod">
+   <h2 class="panel-heading">Recently Updated</h2>
+   <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+       <li class="text-truncate lh-lg">
+          <a href="/blog/rtsp/">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/gym/">Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/steam-bot/">Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/twitter/">Automated Luck: How My Twitter Bot Won Contests While I Slept</a>
+   </ul>
+ </section>
+ <section>
+   <h2 class="panel-heading">Trending Tags</h2>
+   <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/prometheus/">Prometheus</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/rtsp/">RTSP</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/steam/">Steam</a>
+   </div>
+ </section>
+           </div>
+ <div class="toc-border-cover z-3"></div>
+ <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+   <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
+   <nav id="toc"></nav>
+ </section>
+         </aside>
+       </div>
+       <div class="row">
+         <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+ <aside id="related-posts" aria-labelledby="related-label">
+   <h3 class="mb-4" id="related-label">Further Reading</h3>
+   <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+       <article class="col">
+          <a href="/blog/gym/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1743733800"
+  data-df="ll"
+>
+  Apr  4, 2025
+</time>
+             <h4 class="pt-0 my-2">Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</h4>
+             <div class="text-muted">
+               <p>Exploring how I built a Prometheus exporter to track live attendance at my local gym. From data scraping to trend analysis, here’s how I turned raw numbers into actionable insights.</p>
+             </div>
+           </div>
+          </a>
+       </article>
+       <article class="col">
+          <a href="/blog/steam-bot/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1628951400"
+  data-df="ll"
+>
+  Aug 15, 2021
+</time>
+             <h4 class="pt-0 my-2">Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</h4>
+             <div class="text-muted">
+               <p>The story of my automated arbitrage bot that funded every game I’ve purchased for years. Discover how automation powered my Steam collection and how you can too.</p>
+             </div>
+           </div>
+          </a>
+       </article>
+       <article class="col">
+          <a href="/blog/rtsp/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1743733800"
+  data-df="ll"
+>
+  Apr  4, 2025
+</time>
+             <h4 class="pt-0 my-2">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</h4>
+             <div class="text-muted">
+               <p>RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing</p>
+             </div>
+           </div>
+          </a>
+       </article>
+   </nav>
+ </aside>
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+   <div class="btn btn-outline-primary disabled" aria-label="Older">
+     <p>-</p>
+   </div>
+    <a
+      href="/blog/steam-bot/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+     <p>Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</p>
+    </a>
+</nav>
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+ <p>©
+    <time>2025</time>
+      <a href="https://twitter.com/travispooley">Travis Pooley</a>.
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+      >Some rights reserved.</span>
+ </p>
+ <p>Using a modifed version of the <a data-bs-toggle="tooltip" data-bs-placement="top" href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.</p>
+</footer>
+         </div>
+       </div>
+<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+ <div class="col-11 content">
+   <div id="search-hints">
+ <section>
+   <h2 class="panel-heading">Trending Tags</h2>
+   <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/prometheus/">Prometheus</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/rtsp/">RTSP</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/steam/">Steam</a>
+   </div>
+ </section>
+   </div>
+   <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+ </div>
+</div>
+     </div>
+     <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+     </aside>
+   </div>
+   <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+     <aside
+  id="notification"
+  class="toast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="true"
+  data-bs-autohide="false"
+>
+ <div class="toast-header">
+    <button
+      type="button"
+      class="btn-close ms-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+ </div>
+ <div class="toast-body text-center pt-0">
+   <p class="px-2 mb-3">A new version of content is available.</p>
+    <button type="button" class="btn btn-primary" aria-label="Update">
+      Update
+    </button>
+ </div>
+</aside>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: ' <article class="px-1 px-sm-2 px-lg-4 px-xl-0">  <header>     <h2><a href="{url}">{title}</a></h2>    <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}     </div>  </header>  <p>{snippet}</p></article>',
+      noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
+        }
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
+        }
+      }
+    });
+  });
+</script>
+  
