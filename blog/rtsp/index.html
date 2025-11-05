@@ -1,0 +1,897 @@
+<!doctype html>
+<script src="/assets/js/custom/sidebar-toggle.js"></script>
+<html lang="en" >
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+ <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  >
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing" />
+<meta property="og:description" content="RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing" />
+<link rel="canonical" href="https://travispooley.com/blog/rtsp/" />
+<meta property="og:url" content="https://travispooley.com/blog/rtsp/" />
+<meta property="og:site_name" content="Travis Pooley" />
+<meta property="og:image" content="https://travispooley.com/assets/image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-04-04T13:00:00+10:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://travispooley.com/assets/image.png" />
+<meta property="twitter:title" content="Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation" />
+<meta name="twitter:site" content="@travispooley" />
+<meta name="google-site-verification" content="f02O3VZopgRRCh11WVAYFg7u8JqoCK5JUkV8v7RVTVs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-04-04T13:00:00+10:30","datePublished":"2025-04-04T13:00:00+10:30","description":"RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing","headline":"Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation","image":"https://travispooley.com/assets/image.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/blog/rtsp/"},"url":"https://travispooley.com/blog/rtsp/"}</script>
+ <title>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation | Travis Pooley
+ </title>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Travis Pooley">
+<meta name="application-name" content="Travis Pooley">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+  <script src="/assets/js/dist/theme.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZJGB7Q1Y9"></script>
+<script>
+  /* global dataLayer */
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3ZJGB7Q1Y9');
+</script>
+ <body>
+<div class="nx-topbar-wrapper" id="topbar">
+ <div class="nx-topbar">
+   <div class="nx-container">
+     <div class="nx-logo">
+        <a href="/">Travis Pooley</a>
+     </div>
+     <nav class="nx-nav">
+       <ul>
+         <li><a href="/">Home</a>
+         <li><a href="/#about">About</a>
+         <li><a href="/#experience">Experience</a>
+         <li><a href="/books">Books</a>
+         <li><a href="/blog">Blog</a>
+       </ul>
+     </nav>
+     <div class="nx-actions">
+        <button id="topbar-theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+           <line x1="12" y1="1" x2="12" y2="3"></line>
+           <line x1="12" y1="21" x2="12" y2="23"></line>
+           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+           <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+           <line x1="1" y1="12" x2="3" y2="12"></line>
+           <line x1="21" y1="12" x2="23" y2="12"></line>
+           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="/#contact" class="nx-button primary">Contact</a>
+     </div>
+   </div>
+ </div>
+</div>
+<style>
+/* CSS for the top menu bar with dark/light mode support */
+:root {
+  --nx-primary: #0066FF;
+}
+.nx-topbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.nx-topbar {
+  width: 100%;
+  max-width: 1250px;
+  padding: 10px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Light mode styles (default) */
+.nx-topbar {
+  background: var(--main-bg);
+}
+.nx-logo a {
+  color: var(--heading-color);
+}
+.nx-nav a {
+  color: var(--heading-color);
+}
+.theme-toggle {
+  color: var(--heading-color);
+}
+.nx-container {
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nx-logo a {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.nx-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nx-nav li {
+  margin: 0 15px;
+  position: relative;
+}
+.nx-nav a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nx-nav a:hover {
+  opacity: 0.8;
+}
+.nx-actions {
+  display: flex;
+  align-items: center;
+}
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+body.dark-theme .theme-toggle:hover,
+body[data-mode="dark"] .theme-toggle:hover,
+html[data-mode="dark"] .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+  display: none;
+}
+.nx-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nx-button.primary {
+  background-color: var(--nx-primary);
+  color: white;
+}
+.nx-button.primary:hover {
+  filter: brightness(1.1);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nx-nav {
+    display: none;
+  }
+  .nx-container {
+    justify-content: space-between;
+  }
+}
+</style>
+<script>
+// This script forwards the click event from our theme toggle to Chirpy's theme toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const topbarThemeToggle = document.getElementById('topbar-theme-toggle');
+  const chirpyThemeToggle = document.getElementById('mode-toggle');
+  // Function to check if current theme is dark
+  function isDarkTheme() {
+    // Check for body background color
+    const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+    const bodyBgVar = getComputedStyle(document.body).getPropertyValue('--main-bg').trim();
+    // Convert background color to hex or check variable value
+    let isDark = false;
+    // If the body has a background color matching #1b1b1e (or similar dark color)
+    if (bodyBg) {
+      const rgb = bodyBg.match(/\d+/g);
+      if (rgb && rgb.length >= 3) {
+        // Check if it's a dark color (rough approximation)
+        isDark = (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2])) / 3 < 128;
+      }
+    }
+    // If the CSS variable --main-bg is set to #1b1b1e
+    if (bodyBgVar === '#1b1b1e') {
+      isDark = true;
+    }
+    // Additional checks for theme indicators
+    isDark = isDark || 
+             document.body.classList.contains('dark-theme') || 
+             document.body.getAttribute('data-mode') === 'dark' ||
+             document.documentElement.getAttribute('data-mode') === 'dark';
+    return isDark;
+  }
+  // Function to update theme icon based on current theme
+  function updateThemeIcon() {
+    if (!topbarThemeToggle) return;
+    const sunIcon = topbarThemeToggle.querySelector('.sun-icon');
+    const moonIcon = topbarThemeToggle.querySelector('.moon-icon');
+    const dark = isDarkTheme();
+    // In dark mode, show sun icon (to switch to light)
+    if (dark) {
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+    } 
+    // In light mode, show moon icon (to switch to dark)
+    else {
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+  }
+  // Set up click event
+  if (topbarThemeToggle && chirpyThemeToggle) {
+    topbarThemeToggle.addEventListener('click', () => {
+      // Trigger a click on Chirpy's theme toggle button
+      chirpyThemeToggle.click();
+      // Wait a moment for the theme to change, then update icon
+      setTimeout(updateThemeIcon, 100);
+    });
+  }
+  // Set icon state on initial load
+  updateThemeIcon();
+  // Watch for theme changes on body element
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(() => {
+      updateThemeIcon();
+    });
+  });
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class', 'data-mode', 'style']
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-mode', 'class']
+  });
+  // Check periodically as well
+  setInterval(updateThemeIcon, 1000);
+});
+</script>
+<aside aria-label="Sidebar" id="sidebar" class="d-none flex-column align-items-end">
+<header class="profile-wrapper">
+    <a class="site-title d-block" href="/">Travis Pooley</a>
+ </header>
+ <nav class="flex-column flex-grow-1 w-100 ps-0">
+   <ul class="nav">
+     <li class="nav-item">
+        <a href="/" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>HOME</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#about" class="nav-link">
+          <i class="fa-fw fas fa-circle-info"></i>
+          <span>About Me</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#experience" class="nav-link">
+          <i class="fa-fw fas fa-user-tie"></i>
+          <span>Experience</span>
+        </a>
+     <li class="nav-item">
+        <a href="/books/" class="nav-link">
+          <i class="fa-fw fas fa-book"></i>
+          <span>Books</span>
+        </a>
+     <li class="nav-item">
+        <a href="/blog/" class="nav-link">
+          <i class="fa-fw fas fa-newspaper"></i>
+          <span>Blog</span>
+        </a>
+     <li class="nav-item">
+        <a href="/#contact" class="nav-link">
+          <i class="fa-fw fas fa-envelope"></i>
+          <span>Contact</span>
+        </a>
+   </ul>
+ </nav>
+ <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
+      <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+        <span class="icon-border"></span>
+        <a
+          href="https://github.com/travispooley"
+          aria-label="github"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://twitter.com/travispooley"
+          aria-label="twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a
+          href="javascript:location.href = 'mailto:' + ['travispooley','gmail.com'].join('@')"
+          aria-label="email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="/feed.xml"
+          aria-label="rss"
+        >
+          <i class="fas fa-rss"></i>
+        </a>
+ </div>
+</aside>
+   <div id="main-wrapper" class="d-flex justify-content-center">
+     <div class="container d-flex flex-column px-xxl-5">
+<header id="topbar-wrapper" class="flex-shrink-0" aria-label="Top Bar">
+ <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+   <nav id="breadcrumb" aria-label="Breadcrumb"><span>
+              <a href="/">Home</a>
+            </span><span><a href="/blog/">
+                  Blog
+                </a></span><span>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</span></nav>
+    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+   <div id="topbar-title">Post</div>
+    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancel</button>
+ </div>
+</header>
+       <div class="row flex-grow-1">
+         <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+<article class="px-1" data-toc="true">
+<header>
+   <h1 data-toc-skip>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</h1><p class="post-desc fw-light mb-4">RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing</p><div class="post-meta text-muted">
+      <span>
+        Posted
+<time
+  data-ts="1743733800"
+  data-df="ll"
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+>
+  Apr  4, 2025
+</time>
+</span>
+     <div class="mt-3 mb-3">
+          <a href="/assets/image.png" class="popup img-link preview-img shimmer"><img src="/assets/image.png"  alt="Preview Image" width="1200" height="630"  loading="lazy"></a></div><div class="d-flex justify-content-between">
+        <span>By
+          <em><a href="https://twitter.com/travispooley">Travis Pooley</a></em>
+        </span>
+       <div>
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="934 words"
+>
+  <em>5 min</em> read</span>
+</div>
+     </div>
+   </div>
+ </header><div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+   </div>
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+    <dialog id="toc-popup" class="p-0">
+     <div class="header d-flex flex-row align-items-center justify-content-between">
+       <div class="label text-truncate py-2 ms-4">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+     </div>
+     <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog><div class="content">
+   <h2 id="introduction"><span class="me-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>In the world of home automation and security systems, testing can quickly become tedious. My recent project involving facial recognition with security cameras highlighted this problem perfectly. After the tenth time running in and out of my camera’s field of view to trigger the system, I knew there had to be a better way to test these setups.</p>
+<p>Inspiration struck from an unexpected place - those classic bank heist movies where criminals hack security cameras to loop old footage. Surely, I thought, someone must have created a solution for this already. To my surprise, I found very little that matched what I needed. So I built it myself: a Docker container that hosts an RTSP server capable of streaming test footage to my security system.</p>
+<h2 id="the-problem"><span class="me-2">The Problem</span><a href="#the-problem" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Testing security camera automations traditionally requires:</p>
+<ul>
+ <li>Physically triggering the camera multiple times
+ <li>Waiting for processing to complete
+ <li>Adjusting settings and repeating the process
+</ul>
+<p>This is not only time-consuming but also impractical for fine-tuning facial recognition systems that need consistent input.</p>
+<h2 id="the-solution"><span class="me-2">The Solution</span><a href="#the-solution" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>My solution is a simple yet effective Docker container that:</p>
+<ol>
+ <li>Runs an RTSP server (MediaMTX)
+ <li>Streams video content on demand
+ <li>Can be easily integrated into existing security camera setups for testing
+</ol>
+<p>The beauty of this approach is that it lets you feed consistent test footage into your system without having to physically trigger your cameras repeatedly.</p>
+<h2 id="technical-implementation"><span class="me-2">Technical Implementation</span><a href="#technical-implementation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>The implementation consists of two main components:</p>
+<h3 id="1-the-dockerfile"><span class="me-2">1. The Dockerfile</span><a href="#1-the-dockerfile" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<div class="language-dockerfile highlighter-rouge"><div class="code-header">
+        <span data-label-text="Dockerfile"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre><span class="c"># Use a lightweight Debian base image to keep the image size small</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">debian:bookworm-slim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="c"># Install FFmpeg and clean up to reduce image size</span>
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apt-get <span class="nb">install</span> <span class="nt">-y</span> ffmpeg <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    apt-get clean <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="nb">rm</span> <span class="nt">-rf</span> /var/lib/apt/lists/<span class="k">*</span>
+
+<span class="c"># Use the MediaMTX base image that includes FFmpeg support</span>
+<span class="k">FROM</span><span class="s"> bluenviron/mediamtx:latest-ffmpeg</span>
+
+<span class="c"># Copy the video file into the container</span>
+<span class="k">COPY</span><span class="s"> videos/rickroll.mp4 /videos/rickroll.mp4</span>
+
+<span class="c"># Configure MediaMTX to use TCP only for RTSP (more firewall-friendly)</span>
+<span class="k">ENV</span><span class="s"> MTX_PROTOCOLS=tcp</span>
+
+<span class="c"># Expose RTSP port</span>
+<span class="k">EXPOSE</span><span class="s"> 8554</span>
+
+<span class="c"># Add and make the custom entrypoint executable</span>
+<span class="k">COPY</span><span class="s"> entrypoint.sh /entrypoint.sh</span>
+<span class="k">RUN </span><span class="nb">chmod</span> +x /entrypoint.sh
+
+<span class="c"># Set the entrypoint script to launch MediaMTX</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["/entrypoint.sh"]</span>
+</pre></table></code></div></div>
+<p>The Dockerfile uses a multi-stage build approach:</p>
+<ul>
+ <li>First stage: Uses a light weight Debian to install FFmpeg, which will handle video conversion and streaming
+ <li>Second stage: Uses the MediaMTX image as the base (MediaMTX is a lightweight, ready-to-use RTSP/RTMP/HLS server)
+ <li>In my exaple I only expoes the port required for RTSP but there is various protocols supported by MediaMTX which you can chose to export (8554 1935 8888 8889 8890/udp 8189/udp)
+ <li>An entrypoint script handles the startup logic
+</ul>
+<h3 id="2-the-entrypoint-script"><span class="me-2">2. The Entrypoint Script</span><a href="#2-the-entrypoint-script" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<div class="language-bash highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c"># Start MediaMTX (RTSP server) in the background</span>
+<span class="c"># MediaMTX provides Real-Time Streaming Protocol functionality</span>
+/mediamtx &amp;
+
+<span class="c"># Wait for MediaMTX to fully initialize</span>
+<span class="c"># This delay ensures the RTSP server is ready to accept connections</span>
+<span class="nb">sleep </span>5
+
+<span class="c"># Start FFmpeg to stream video to the RTSP server</span>
+<span class="c"># Parameters:</span>
+<span class="c">#   -re                 = Read input at native frame rate (real-time)</span>
+<span class="c">#   -stream_loop -1     = Loop the input file indefinitely</span>
+<span class="c">#   -i                  = Input file path</span>
+<span class="c">#   -c:v libx264        = Use H.264 video codec</span>
+<span class="c">#   -preset ultrafast   = Use fastest encoding preset (reduces quality but lowers latency)</span>
+<span class="c">#   -tune zerolatency   = Optimize for minimal latency</span>
+<span class="c">#   -c:a copy           = Copy audio stream without re-encoding</span>
+<span class="c">#   -f rtsp             = Output format is RTSP</span>
+<span class="c">#   -rtsp_transport tcp = Use TCP (more reliable than UDP) for RTSP transport</span>
+ffmpeg <span class="nt">-re</span> <span class="nt">-stream_loop</span> <span class="nt">-1</span> <span class="nt">-i</span> /videos/rickroll.mp4 <span class="nt">-c</span>:v libx264 <span class="nt">-preset</span> ultrafast <span class="nt">-tune</span> zerolatency <span class="nt">-c</span>:a copy <span class="nt">-f</span> rtsp <span class="nt">-rtsp_transport</span> tcp rtsp://localhost:8554/mystream
+</pre></table></code></div></div>
+<p>This script:</p>
+<ul>
+ <li>Launches the MediaMTX server in the background
+ <li>Waits for it to initialize
+ <li>Uses FFmpeg to continuously stream the provided video file to the RTSP server
+ <li>The <code class="language-plaintext highlighter-rouge">-stream_loop -1</code> flag ensures the video loops infinitely
+ <li>Video is encoded with H.264 as it matches the encoding of my security system
+ <li>The <code class="language-plaintext highlighter-rouge">ultrafast</code> preset and <code class="language-plaintext highlighter-rouge">zerolatency</code> tune optimize for real-time streaming
+</ul>
+<h2 id="the-rick-astley-factor"><span class="me-2">The Rick Astley Factor</span><a href="#the-rick-astley-factor" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>For my testing purposes, I used <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Rick Astley’s “Never Gonna Give You Up”</a> as my test footage. There’s something poetically fitting about Rickrolling your own security system!</p>
+<p><a href="/assets/image.png" class="popup img-link  shimmer"><img src="/assets/image.png" alt="Desktop View" loading="lazy"></a>
+<em>VLC showing RTSP feed of rick roll</em></p>
+<h2 id="usage"><span class="me-2">Usage</span><a href="#usage" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>To use this container in your homelab:</p>
+<ol>
+ <li>Clone the repository containing the Dockerfile and entrypoint script
+   <div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>git clone https://github.com/TravisPooley/RTSP-Test-Server.git
+<span class="nb">cd </span>RTSP-Test-Server
+</pre></table></code></div>  </div>
+ <li>Create a <code class="language-plaintext highlighter-rouge">videos</code> directory and add your test video (or use Rick Astley for extra fun)
+ <li>Build the Docker image:
+   <div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>docker build <span class="nt">-t</span> rtsp-server <span class="nb">.</span>
+</pre></table></code></div>  </div>
+ <li>Run the container:
+   <div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>docker run <span class="nt">-d</span> <span class="nt">--name</span> rtsp-test <span class="nt">-p</span> 8554:8554 rtsp-server
+</pre></table></code></div>  </div>
+ <li>Connect your security system to <code class="language-plaintext highlighter-rouge">rtsp://your-docker-host:8554/mystream</code>
+</ol>
+<h2 id="benefits-and-applications"><span class="me-2">Benefits and Applications</span><a href="#benefits-and-applications" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>This solution has several advantages:</p>
+<ul>
+ <li><strong>Consistency</strong>: The same exact footage is used for every test
+ <li><strong>Efficiency</strong>: No need to physically trigger cameras
+ <li><strong>Integration Testing</strong>: Test your entire pipeline with known inputs
+ <li><strong>Isolation</strong>: Debug specific parts of your system without changing others
+</ul>
+<h2 id="conclusion"><span class="me-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Building this RTSP Docker container saved me countless trips running in front of my security camera.</p>
+<p>Whether you’re building a sophisticated home security system or just experimenting with computer vision, having a reliable way to stream test footage can save you time and sanity.</p>
+<p>Feel free to adapt this solution to your needs, and remember: in the world of home automation testing, we’re never gonna give up making things better!</p>
+<hr />
+<p><em>Got a security camera system that needs testing? Check out the full code for this project on <a href="https://github.com/TravisPooley/RTSP-Test-Server">GitHub</a>.</em></p>
+ </div>
+ <div class="post-tail-wrapper text-muted">
+   <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i><a href="/categories/project/">Project</a></div><div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i><a
+            href="/tags/rtsp/"
+            class="post-tag no-text-decoration"
+          >RTSP</a><a
+            href="/tags/ffmpeg/"
+            class="post-tag no-text-decoration"
+          >FFMPEG</a><a
+            href="/tags/docker/"
+            class="post-tag no-text-decoration"
+          >Docker</a></div><div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+     <div class="license-wrapper">This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a> by the author.</div>
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+      <a href="https://twitter.com/intent/tweet?text=Never%20Gonna%20Give%20Up%20Testing:%20Building%20an%20RTSP%20Docker%20Container%20for%20Security%20Camera%20Automation%20-%20Travis%20Pooley&url=https%3A%2F%2Ftravispooley.com%2Fblog%2Frtsp%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Never%20Gonna%20Give%20Up%20Testing:%20Building%20an%20RTSP%20Docker%20Container%20for%20Security%20Camera%20Automation%20-%20Travis%20Pooley&u=https%3A%2F%2Ftravispooley.com%2Fblog%2Frtsp%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftravispooley.com%2Fblog%2Frtsp%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin" aria-label="Linkedin">
+        <i class="fa-fw fab fa-linkedin"></i>
+      </a>
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
+</div>
+ </div>
+</article>
+         </main>
+         <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+           <div class="access">
+ <section id="access-lastmod">
+   <h2 class="panel-heading">Recently Updated</h2>
+   <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+       <li class="text-truncate lh-lg">
+          <a href="/blog/meshtastic/">Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/rtsp/">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/gym/">Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/steam-bot/">Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library</a>
+       <li class="text-truncate lh-lg">
+          <a href="/blog/twitter/">Automated Luck: How My Twitter Bot Won Contests While I Slept</a>
+   </ul>
+ </section>
+ <section>
+   <h2 class="panel-heading">Trending Tags</h2>
+   <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+        <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/api/">API</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/lora/">LoRa</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/meshtastic/">Meshtastic</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
+   </div>
+ </section>
+           </div>
+ <div class="toc-border-cover z-3"></div>
+ <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+   <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
+   <nav id="toc"></nav>
+ </section>
+         </aside>
+       </div>
+       <div class="row">
+         <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+ <aside id="related-posts" aria-labelledby="related-label">
+   <h3 class="mb-4" id="related-label">Further Reading</h3>
+   <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+       <article class="col">
+          <a href="/blog/meshtastic/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1760016600"
+  data-df="ll"
+>
+  Oct 10, 2025
+</time>
+             <h4 class="pt-0 my-2">Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</h4>
+             <div class="text-muted">
+               <p>Building a solar-powered Meshtastic LoRa mesh node using RAK Wireless WisBlock hardware and automating via Python using BLE connectivity</p>
+             </div>
+           </div>
+          </a>
+       </article>
+       <article class="col">
+          <a href="/blog/gym/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1743733800"
+  data-df="ll"
+>
+  Apr  4, 2025
+</time>
+             <h4 class="pt-0 my-2">Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</h4>
+             <div class="text-muted">
+               <p>Exploring how I built a Prometheus exporter to track live attendance at my local gym. From data scraping to trend analysis, here’s how I turned raw numbers into actionable insights.</p>
+             </div>
+           </div>
+          </a>
+       </article>
+       <article class="col">
+          <a href="/blog/steam-bot/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1628947800"
+  data-df="ll"
+>
+  Aug 15, 2021
+</time>
+             <h4 class="pt-0 my-2">Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library</h4>
+             <div class="text-muted">
+               <p>The story of my automated arbitrage bot that funded every game I’ve purchased for years. Discover how automation powered my Steam collection and how you can too.</p>
+             </div>
+           </div>
+          </a>
+       </article>
+   </nav>
+ </aside>
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+    <a
+      href="/blog/steam-bot/"
+      class="btn btn-outline-primary"
+      aria-label="Older"
+    >
+     <p>Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library</p>
+    </a>
+    <a
+      href="/blog/gym/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+     <p>Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</p>
+    </a>
+</nav>
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+ <p>©
+    <time>2025</time>
+      <a href="https://twitter.com/travispooley">Travis Pooley</a>.
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+      >Some rights reserved.</span>
+ </p>
+ <p>Using a modifed version of the <a data-bs-toggle="tooltip" data-bs-placement="top" href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme for <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.</p>
+</footer>
+         </div>
+       </div>
+<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+ <div class="col-11 content">
+   <div id="search-hints">
+ <section>
+   <h2 class="panel-heading">Trending Tags</h2>
+   <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+        <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/api/">API</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/lora/">LoRa</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/meshtastic/">Meshtastic</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
+   </div>
+ </section>
+   </div>
+   <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+ </div>
+</div>
+     </div>
+     <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+     </aside>
+   </div>
+   <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+     <aside
+  id="notification"
+  class="toast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  data-bs-animation="true"
+  data-bs-autohide="false"
+>
+ <div class="toast-header">
+    <button
+      type="button"
+      class="btn-close ms-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+ </div>
+ <div class="toast-body text-center pt-0">
+   <p class="px-2 mb-3">A new version of content is available.</p>
+    <button type="button" class="btn btn-primary" aria-label="Update">
+      Update
+    </button>
+ </div>
+</aside>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/js/data/search.json',
+      searchResultTemplate: ' <article class="px-1 px-sm-2 px-lg-4 px-xl-0">  <header>     <h2><a href="{url}">{title}</a></h2>    <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">        {categories}        {tags}     </div>  </header>  <p>{snippet}</p></article>',
+      noResultsText: '<p class="mt-5">Oops! No results found.</p>',
+      templateMiddleware: function(prop, value, template) {
+        if (prop === 'categories') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+          }
+        }
+        if (prop === 'tags') {
+          if (value === '') {
+            return `${value}`;
+          } else {
+            return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+          }
+        }
+      }
+    });
+  });
+</script>
+  
