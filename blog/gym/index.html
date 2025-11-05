@@ -21,14 +21,14 @@
 <meta property="og:site_name" content="Travis Pooley" />
 <meta property="og:image" content="https://travispooley.com/assets/images/gym/gym_dashboard_darkmode.webp" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-04-04T12:00:00+09:30" />
+<meta property="article:published_time" content="2025-04-04T13:00:00+10:30" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://travispooley.com/assets/images/gym/gym_dashboard_darkmode.webp" />
 <meta property="twitter:title" content="Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus" />
 <meta name="twitter:site" content="@travispooley" />
 <meta name="google-site-verification" content="f02O3VZopgRRCh11WVAYFg7u8JqoCK5JUkV8v7RVTVs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-04-04T12:00:00+09:30","datePublished":"2025-04-04T12:00:00+09:30","description":"Exploring how I built a Prometheus exporter to track live attendance at my local gym. From data scraping to trend analysis, here’s how I turned raw numbers into actionable insights.","headline":"Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus","image":"https://travispooley.com/assets/images/gym/gym_dashboard_darkmode.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/blog/gym/"},"url":"https://travispooley.com/blog/gym/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-04-04T13:00:00+10:30","datePublished":"2025-04-04T13:00:00+10:30","description":"Exploring how I built a Prometheus exporter to track live attendance at my local gym. From data scraping to trend analysis, here’s how I turned raw numbers into actionable insights.","headline":"Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus","image":"https://travispooley.com/assets/images/gym/gym_dashboard_darkmode.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/blog/gym/"},"url":"https://travispooley.com/blog/gym/"}</script>
  <title>Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus | Travis Pooley
  </title>
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="3374 words"
+  title="3378 words"
 >
   <em>18 min</em> read</span>
 </div>
@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </dialog><div class="content">
    <h2 id="introduction"><span class="me-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p>If you’re anything like me, you tend to be a bit curious about how things work behind the scenes. Maybe it’s a slight hacker tendency or just a habit of not taking data at face value. So when I saw the digital attendance counters on the <em>REDACTED</em> Fitness application, I couldn’t help but wonder how accurate they really were.</p>
-<p>I built a Prometheus exporter that scrapes attendance data from all <em>REDACTED</em> Fitness locations. What started as a simple attempt to verify if the counters ever hit zero quickly transformed into a comprehensive data gathering initiative. The project now lives on my home server, integrated with my existing homelab infrastructure, collecting valuable insights about gym attendance patterns across different locations.</p>
+<p>To quench this curiosity, I built a Prometheus exporter that scrapes attendance data from all <em>REDACTED</em> Fitness locations. What started as a simple attempt to verify if the counters ever hit zero quickly transformed into a comprehensive data gathering initiative. The project now lives on my home server, integrated with my existing homelab infrastructure, collecting valuable insights about gym attendance patterns across different locations.</p>
 <p>In this post, I’ll walk you through how this project came to be, what I discovered, and how you might benefit from similar data about your own gym.</p>
 <h2 id="the-problem--hypothesis"><span class="me-2">The Problem &amp; Hypothesis</span><a href="#the-problem--hypothesis" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p>My scepticism began with a simple observation, people were being counted when entering the gym, but what about when they left? I suspected various scenarios, such as tailgating (when multiple people exit but only one scan occurs) might be causing inaccuracies in the reported numbers.</p>
@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <a href="/assets/images/gym/Australind_launch_darkmode.webp" class="popup img-link dark rounded-10 shimmer"><img src="/assets/images/gym/Australind_launch_darkmode.webp" alt="dark mode only"  loading="lazy"></a></p>
 <h2 id="technical-details--open-source"><span class="me-2">Technical Details &amp; Open Source</span><a href="#technical-details--open-source" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p>The entire project is available on GitHub:
-<a href="github.com/TravisPooley/RevoFitness-Attendance-Exporter">github.com/TravisPooley/RevoFitness-Attendance-Exporter</a></p>
+<a href="https://github.com/TravisPooley/RevoFitness-Attendance-Exporter">github.com/TravisPooley/RevoFitness-Attendance-Exporter</a></p>
 <p>The core components include:</p>
 <ul>
  <li>A Python-based Prometheus exporter using BeautifulSoup for HTML parsing
@@ -878,11 +878,13 @@ document.addEventListener('DOMContentLoaded', () => {
    <h2 class="panel-heading">Recently Updated</h2>
    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
        <li class="text-truncate lh-lg">
+          <a href="/blog/meshtastic/">Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</a>
+       <li class="text-truncate lh-lg">
           <a href="/blog/rtsp/">Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</a>
        <li class="text-truncate lh-lg">
           <a href="/blog/gym/">Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</a>
        <li class="text-truncate lh-lg">
-          <a href="/blog/steam-bot/">Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</a>
+          <a href="/blog/steam-bot/">Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library</a>
        <li class="text-truncate lh-lg">
           <a href="/blog/twitter/">Automated Luck: How My Twitter Bot Won Contests While I Slept</a>
    </ul>
@@ -890,16 +892,16 @@ document.addEventListener('DOMContentLoaded', () => {
  <section>
    <h2 class="panel-heading">Trending Tags</h2>
    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
-        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/api/">API</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/lora/">LoRa</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/meshtastic/">Meshtastic</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/prometheus/">Prometheus</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/rtsp/">RTSP</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/steam/">Steam</a>
    </div>
  </section>
            </div>
@@ -915,6 +917,22 @@ document.addEventListener('DOMContentLoaded', () => {
  <aside id="related-posts" aria-labelledby="related-label">
    <h3 class="mb-4" id="related-label">Further Reading</h3>
    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+       <article class="col">
+          <a href="/blog/meshtastic/" class="post-preview card h-100">
+           <div class="card-body">
+<time
+  data-ts="1760016600"
+  data-df="ll"
+>
+  Oct 10, 2025
+</time>
+             <h4 class="pt-0 my-2">Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</h4>
+             <div class="text-muted">
+               <p>Building a solar-powered Meshtastic LoRa mesh node using RAK Wireless WisBlock hardware and automating via Python using BLE connectivity</p>
+             </div>
+           </div>
+          </a>
+       </article>
        <article class="col">
           <a href="/blog/twitter/" class="post-preview card h-100">
            <div class="card-body">
@@ -947,22 +965,6 @@ document.addEventListener('DOMContentLoaded', () => {
            </div>
           </a>
        </article>
-       <article class="col">
-          <a href="/blog/steam-bot/" class="post-preview card h-100">
-           <div class="card-body">
-<time
-  data-ts="1628951400"
-  data-df="ll"
->
-  Aug 15, 2021
-</time>
-             <h4 class="pt-0 my-2">Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</h4>
-             <div class="text-muted">
-               <p>The story of my automated arbitrage bot that funded every game I’ve purchased for years. Discover how automation powered my Steam collection and how you can too.</p>
-             </div>
-           </div>
-          </a>
-       </article>
    </nav>
  </aside>
 <nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
@@ -973,9 +975,13 @@ document.addEventListener('DOMContentLoaded', () => {
     >
      <p>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</p>
     </a>
-   <div class="btn btn-outline-primary disabled" aria-label="Newer">
-     <p>-</p>
-   </div>
+    <a
+      href="/blog/meshtastic/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+     <p>Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</p>
+    </a>
 </nav>
 <footer
   aria-label="Site Info"
@@ -1003,16 +1009,16 @@ document.addEventListener('DOMContentLoaded', () => {
  <section>
    <h2 class="panel-heading">Trending Tags</h2>
    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
-        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/api/">API</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/lora/">LoRa</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/meshtastic/">Meshtastic</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/prometheus/">Prometheus</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/rtsp/">RTSP</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/steam/">Steam</a>
    </div>
  </section>
    </div>

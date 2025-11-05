@@ -3,7 +3,7 @@
   <id>https://travispooley.com/</id>
  <title>Travis Pooley</title>
   <subtitle>Hi I'm Travis, I break things on purpose, automate what I can, and share the rest. Welcome to my portfolio of technical mischief.</subtitle>
-  <updated>2025-07-19T20:15:52+09:30</updated>
+  <updated>2025-11-05T11:45:26+10:30</updated>
   <author>
     <name>Travis Pooley</name>
     <uri>https://travispooley.com/</uri>
@@ -16,10 +16,23 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
   <entry>
+   <title>Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking</title>
+  <link href="https://travispooley.com/blog/meshtastic/" rel="alternate" type="text/html" title="Building a Meshtastic Node in Adelaide: My Experince With LoRa Mesh Networking" />
+   <published>2025-10-10T00:00:00+10:30</published>
+    <updated>2025-10-10T00:00:00+10:30</updated>
+    <id>https://travispooley.com/blog/meshtastic/</id>
+    <content type="text/html" src="https://travispooley.com/blog/meshtastic/" />
+    <author>
+      <name>Travis Pooley</name>
+    </author>
+    <category term="Project" />
+  <summary>Building a solar-powered Meshtastic LoRa mesh node using RAK Wireless WisBlock hardware and automating via Python using BLE connectivity</summary>
+  </entry>
+  <entry>
    <title>Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus</title>
   <link href="https://travispooley.com/blog/gym/" rel="alternate" type="text/html" title="Data-Driven Gym: Scraping and Analysing Gym Attendance with Prometheus" />
-   <published>2025-04-04T12:00:00+09:30</published>
-    <updated>2025-04-04T12:00:00+09:30</updated>
+   <published>2025-04-04T13:00:00+10:30</published>
+    <updated>2025-04-04T13:00:00+10:30</updated>
     <id>https://travispooley.com/blog/gym/</id>
     <content type="text/html" src="https://travispooley.com/blog/gym/" />
     <author>
@@ -31,8 +44,8 @@
   <entry>
    <title>Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation</title>
   <link href="https://travispooley.com/blog/rtsp/" rel="alternate" type="text/html" title="Never Gonna Give Up Testing: Building an RTSP Docker Container for Security Camera Automation" />
-   <published>2025-04-04T12:00:00+09:30</published>
-    <updated>2025-04-04T12:00:00+09:30</updated>
+   <published>2025-04-04T13:00:00+10:30</published>
+    <updated>2025-04-04T13:00:00+10:30</updated>
     <id>https://travispooley.com/blog/rtsp/</id>
     <content type="text/html" src="https://travispooley.com/blog/rtsp/" />
     <author>
@@ -42,10 +55,10 @@
   <summary>RTSP Docker Container Streams Rickrolls for Hassle-Free Security Camera Automation testing</summary>
   </entry>
   <entry>
-   <title>Automated Trading: How 500 Lines of JavaScript Funded My Steam Library</title>
-  <link href="https://travispooley.com/blog/steam-bot/" rel="alternate" type="text/html" title="Automated Trading: How 500 Lines of JavaScript Funded My Steam Library" />
-   <published>2021-08-15T00:00:00+09:30</published>
-    <updated>2021-08-15T00:00:00+09:30</updated>
+   <title>Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library</title>
+  <link href="https://travispooley.com/blog/steam-bot/" rel="alternate" type="text/html" title="Automated Trading: How My JavaScript Steam Tading Bot Funded My Steam Library" />
+   <published>2021-08-15T00:00:00+10:30</published>
+    <updated>2021-08-15T00:00:00+10:30</updated>
     <id>https://travispooley.com/blog/steam-bot/</id>
     <content type="text/html" src="https://travispooley.com/blog/steam-bot/" />
     <author>
@@ -57,8 +70,8 @@
   <entry>
    <title>Automated Luck: How My Twitter Bot Won Contests While I Slept</title>
   <link href="https://travispooley.com/blog/twitter/" rel="alternate" type="text/html" title="Automated Luck: How My Twitter Bot Won Contests While I Slept" />
-   <published>2018-06-15T12:00:00+09:30</published>
-    <updated>2018-06-15T12:00:00+09:30</updated>
+   <published>2018-06-15T13:00:00+10:30</published>
+    <updated>2018-06-15T13:00:00+10:30</updated>
     <id>https://travispooley.com/blog/twitter/</id>
     <content type="text/html" src="https://travispooley.com/blog/twitter/" />
     <author>

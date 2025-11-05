@@ -21,13 +21,13 @@
 <meta property="og:url" content="https://travispooley.com/books/" />
 <meta property="og:site_name" content="Travis Pooley" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-07-19T20:15:52+09:30" />
+<meta property="article:published_time" content="2025-11-05T11:45:26+10:30" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Books" />
 <meta name="twitter:site" content="@travispooley" />
 <meta name="google-site-verification" content="f02O3VZopgRRCh11WVAYFg7u8JqoCK5JUkV8v7RVTVs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-19T20:15:52+09:30","datePublished":"2025-07-19T20:15:52+09:30","description":"This is my public reading list of non-fiction books I’ve completed and rated. Automatically updated and open to recommendations.","headline":"Books","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/books/"},"url":"https://travispooley.com/books/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-05T11:45:26+10:30","datePublished":"2025-11-05T11:45:26+10:30","description":"This is my public reading list of non-fiction books I’ve completed and rated. Automatically updated and open to recommendations.","headline":"Books","mainEntityOfPage":{"@type":"WebPage","@id":"https://travispooley.com/books/"},"url":"https://travispooley.com/books/"}</script>
  <title>Books | Travis Pooley
  </title>
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
@@ -391,7 +391,199 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
        <div class="row flex-grow-1">
          <main aria-label="Main Content" class="">
-             <h1 id="my-book-list">My Book List</h1>
+             <style>
+.book-table-container {
+    margin: 1.5rem 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border-color);
+}
+.book-table-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin: 0;
+    padding: 1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--card-border-color);
+    background: var(--card-header-bg);
+}
+.book-table-wrapper {
+    overflow-x: auto;
+    background: var(--card-bg);
+}
+#bookTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+#bookTable th {
+    background: var(--tb-odd-bg);
+    color: var(--text-color);
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid var(--tb-border-color);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+#bookTable th:hover {
+    background: var(--tb-even-bg);
+}
+#bookTable th::after {
+    content: '↕';
+    position: absolute;
+    right: 0.75rem;
+    opacity: 0.5;
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+#bookTable th.sort-asc::after {
+    content: '↑';
+    opacity: 0.8;
+    color: var(--link-color);
+}
+#bookTable th.sort-desc::after {
+    content: '↓';
+    opacity: 0.8;
+    color: var(--link-color);
+}
+#bookTable td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--tb-border-color);
+    vertical-align: middle;
+}
+#bookTable tbody tr {
+    transition: background-color 0.2s ease;
+}
+#bookTable tbody tr:nth-child(even) {
+    background: var(--tb-even-bg);
+}
+#bookTable tbody tr:hover {
+    background: var(--tb-border-color);
+}
+#bookTable .book-title {
+    font-weight: 500;
+    color: var(--heading-color);
+    line-height: 1.4;
+}
+#bookTable .author {
+    color: var(--text-muted);
+    font-style: italic;
+}
+#bookTable .rating {
+    font-size: 1rem;
+    color: #f59e0b;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+#bookTable .date {
+    color: var(--text-muted);
+    font-family: var(--font-family-mono);
+    font-size: 0.8125rem;
+}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .book-table-container {
+        margin: 1rem -1rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .book-table-title {
+        padding: 1rem 1.25rem 0.75rem;
+        font-size: 1.25rem;
+    }
+    .book-table-wrapper {
+        padding: 0;
+    }
+    #bookTable {
+        font-size: 0.8125rem;
+    }
+    #bookTable th,
+    #bookTable td {
+        padding: 0.75rem 0.875rem;
+    }
+    #bookTable th {
+        font-size: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--tb-odd-bg);
+    }
+    /* Stack table content on very small screens */
+    @media (max-width: 480px) {
+        #bookTable,
+        #bookTable thead,
+        #bookTable tbody,
+        #bookTable th,
+        #bookTable td,
+        #bookTable tr {
+            display: block;
+        }
+        #bookTable thead {
+            display: none;
+        }
+        #bookTable tr {
+            border: 1px solid var(--tb-border-color);
+            margin-bottom: 0.75rem;
+            border-radius: 0.5rem;
+            background: var(--card-bg);
+        }
+        #bookTable td {
+            border: none;
+            position: relative;
+            padding: 0.75rem 1rem 0.75rem 6rem;
+            border-bottom: 1px solid var(--tb-border-color);
+            verticle-align: middle;
+        }
+        #bookTable td:last-child {
+            border-bottom: none;
+        }
+        #bookTable td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 1rem;
+            width: 4.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+        #bookTable .book-title:before {
+            content: "Title";
+        }
+        #bookTable .author:before {
+            content: "Author";
+        }
+        #bookTable .rating:before {
+            content: "Rating";
+        }
+        #bookTable .date:before {
+            content: "Date";
+        }
+    }
+}
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+    html[data-mode="dark"] #bookTable .rating {
+        color: #fbbf24;
+    }
+}
+/* Light mode specific adjustments */
+html[data-mode="light"] #bookTable .rating {
+    color: #d97706;
+}
+</style>
+<h1 id="my-book-list">My Book List</h1>
 <p>Here is a list of books I’ve recently completed, spanning finance, business, technology and hacking. I hope this collection sparks some inspiration for your own reading. All data is automatically pulled from my <a href="https://www.goodreads.com/review/list/189397977-travis-pooley">Goodreads</a> profile using a custom Jekyll plugin I built that scrapes the RSS feed and generates this static page.</p>
 <h2 id="rating-scale">Rating Scale</h2>
 <p>I use the standard Goodreads 5-star rating system:</p>
@@ -403,253 +595,474 @@ document.addEventListener('DOMContentLoaded', () => {
  <li>⭐ <strong>1 star:</strong> Didn’t like it, wouldn’t recommend
 </ul>
 <hr />
-<p><strong>47 books</strong> read and reviewed</p>
-<table>
-<thead>
-   <tr>
-     <th style="text-align: left">Title
-     <th style="text-align: center">Author
-     <th style="text-align: center">Rating
-     <th style="text-align: center">Date Read
- <tbody>
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7645519551?utm_medium=api&amp;utm_source=rss">Unreasonable Hospitality: The Remarkable Power of Giving People More Than They Expect</a>
-     <td style="text-align: center">Will Guidara
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">Jul 10, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7660805752?utm_medium=api&amp;utm_source=rss">Dividend Investing Made Easy</a>
-     <td style="text-align: center">Matthew R. Kratter
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Jun 21, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7620398789?utm_medium=api&amp;utm_source=rss">The Simple Path to Wealth: Your Road Map to Financial Independence and a Rich, Free Life</a>
-     <td style="text-align: center">J.L.   Collins
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">Jun 11, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476905776?utm_medium=api&amp;utm_source=rss">Shoe Dog: A Memoir by the Creator of Nike</a>
-     <td style="text-align: center">Phil Knight
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">May 29, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7559672155?utm_medium=api&amp;utm_source=rss">Extremely Hardcore: Inside Elon Musk’s Twitter</a>
-     <td style="text-align: center">Zoë Schiffer
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">May 16, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476927925?utm_medium=api&amp;utm_source=rss">Wisdom from Rich Dad, Poor Dad: What the Rich Teach Their Kids About Money–That the Poor and the Middle Class Do Not!</a>
-     <td style="text-align: center">Robert T. Kiyosaki
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">May 09, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476929112?utm_medium=api&amp;utm_source=rss">Richer, Wiser, Happier: How the World’s Greatest Investors Win in Markets and Life</a>
-     <td style="text-align: center">William                  Green
-     <td style="text-align: center">Not rated
-     <td style="text-align: center">Apr 04, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476916363?utm_medium=api&amp;utm_source=rss">$100M Leads: How to Get Strangers To Want To Buy Your Stuff (Acquisition.com $100M Series)</a>
-     <td style="text-align: center">Alex Hormozi
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Mar 20, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476932490?utm_medium=api&amp;utm_source=rss">The BRRRR Method: Build a Rental Empire With Nothing Out Of Pocket</a>
-     <td style="text-align: center">David Dodge
-     <td style="text-align: center">⭐⭐
-     <td style="text-align: center">Mar 07, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476925313?utm_medium=api&amp;utm_source=rss">Just Keep Buying: Proven Ways to Save Money and Build Your Wealth</a>
-     <td style="text-align: center">Nick Maggiulli
-     <td style="text-align: center">Not rated
-     <td style="text-align: center">Mar 01, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476905618?utm_medium=api&amp;utm_source=rss">Never Split the Difference: Negotiating as if Your Life Depended on It</a>
-     <td style="text-align: center">Chris Voss
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Jan 30, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476905570?utm_medium=api&amp;utm_source=rss">The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change</a>
-     <td style="text-align: center">Stephen R. Covey
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Jan 28, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476933578?utm_medium=api&amp;utm_source=rss">The Four Pillars of Investing: Lessons for Building a Winning Portfolio</a>
-     <td style="text-align: center">William J. Bernstein
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Jan 13, 2025
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476938190?utm_medium=api&amp;utm_source=rss">The Richest Man in Babylon</a>
-     <td style="text-align: center">George S. Clason
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Dec 19, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476926232?utm_medium=api&amp;utm_source=rss">Money Men: A Hot Startup, A Billion Dollar Fraud, A Fight for the Truth</a>
-     <td style="text-align: center">Dan McCrum
-     <td style="text-align: center">⭐⭐
-     <td style="text-align: center">Dec 15, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476920256?utm_medium=api&amp;utm_source=rss">Dopamine Nation: Finding Balance in the Age of Indulgence</a>
-     <td style="text-align: center">Anna Lembke
-     <td style="text-align: center">⭐⭐
-     <td style="text-align: center">Dec 12, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476924416?utm_medium=api&amp;utm_source=rss">I Will Teach You to Be Rich: No Guilt. No Excuses. No BS. Just a 6-Week Program That Works</a>
-     <td style="text-align: center">Ramit Sethi
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Nov 27, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476913844?utm_medium=api&amp;utm_source=rss">The Cuckoo’s Egg: Tracking a Spy Through the Maze of Computer Espionage</a>
-     <td style="text-align: center">Clifford Stoll
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Nov 12, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476931039?utm_medium=api&amp;utm_source=rss">The Big Secret for the Small Investor: The Shortest Route to Long-Term Investment Success</a>
-     <td style="text-align: center">Joel Greenblatt
-     <td style="text-align: center">Not rated
-     <td style="text-align: center">Nov 09, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476937746?utm_medium=api&amp;utm_source=rss">The Psychology of Money</a>
-     <td style="text-align: center">Morgan Housel
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Nov 08, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476931622?utm_medium=api&amp;utm_source=rss">The Big Short: Inside the Doomsday Machine</a>
-     <td style="text-align: center">Michael   Lewis
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Nov 04, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476927227?utm_medium=api&amp;utm_source=rss">Number Go Up: Inside Crypto’s Wild Rise and Staggering Fall</a>
-     <td style="text-align: center">Zeke Faux
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">Oct 24, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476938634?utm_medium=api&amp;utm_source=rss">Why We Sleep: Unlocking the Power of Sleep and Dreams</a>
-     <td style="text-align: center">Matthew Walker
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Oct 09, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476917037?utm_medium=api&amp;utm_source=rss">$100M Offers: How To Make Offers So Good People Feel Stupid Saying No</a>
-     <td style="text-align: center">Alex Hormozi
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Sep 23, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476919220?utm_medium=api&amp;utm_source=rss">Beating the Street</a>
-     <td style="text-align: center">Peter Lynch
-     <td style="text-align: center">Not rated
-     <td style="text-align: center">Sep 17, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476925771?utm_medium=api&amp;utm_source=rss">Masters of Deception: The Gang That Ruled Cyberspace</a>
-     <td style="text-align: center">Michelle Slatalla
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Sep 11, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476936769?utm_medium=api&amp;utm_source=rss">The Next Millionaire Next Door: Enduring Strategies for Building Wealth</a>
-     <td style="text-align: center">Thomas J. Stanley
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Sep 10, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476923783?utm_medium=api&amp;utm_source=rss">Human Hacking: Win Friends, Influence People, and Leave Them Better Off for Having Met You</a>
-     <td style="text-align: center">Christopher Hadnagy
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Aug 26, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476906827?utm_medium=api&amp;utm_source=rss">Good to Great: Why Some Companies Make the Leap… and Others Don’t</a>
-     <td style="text-align: center">Jim Collins
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Aug 12, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476919651?utm_medium=api&amp;utm_source=rss">Built to Sell: Creating a Business That Can Thrive Without You</a>
-     <td style="text-align: center">John Warrillow
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">Aug 11, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476921947?utm_medium=api&amp;utm_source=rss">Ghost in the Wires: My Adventures as the World’s Most Wanted Hacker</a>
-     <td style="text-align: center">Kevin D. Mitnick
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">Jul 29, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476921314?utm_medium=api&amp;utm_source=rss">How I Rob Banks: And Other Such Places</a>
-     <td style="text-align: center">FC Barker
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Jul 11, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476918269?utm_medium=api&amp;utm_source=rss">Automatic Income: How to Use the Power of Dividend Investing to Beat the Market and Generate Passive Income for Life (Wealth Building Series)</a>
-     <td style="text-align: center">Matthew Paulson
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Jul 04, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476922793?utm_medium=api&amp;utm_source=rss">How I Invest My Money: Finance Experts Reveal How They Save, Spend, and Invest</a>
-     <td style="text-align: center">Joshua Brown
-     <td style="text-align: center">⭐⭐⭐
-     <td style="text-align: center">Jun 28, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476920903?utm_medium=api&amp;utm_source=rss">Explosive Growth: A Few Things I Learned While Growing To 100 Million Users - And Losing $78 Million</a>
-     <td style="text-align: center">Cliff Lerner
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Jun 21, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476939238?utm_medium=api&amp;utm_source=rss">Your Money or Your Life</a>
-     <td style="text-align: center">Joe Dominguez
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Jun 07, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476937364?utm_medium=api&amp;utm_source=rss">The Panama Papers: Breaking the Story of How the Rich and Powerful Hide Their Money</a>
-     <td style="text-align: center">Frederik Obermaier
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">May 23, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476934057?utm_medium=api&amp;utm_source=rss">The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns</a>
-     <td style="text-align: center">John C. Bogle
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">May 07, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476918799?utm_medium=api&amp;utm_source=rss">Baby Steps Millionaires: How Ordinary People Built Extraordinary Wealth– and How You Can Too</a>
-     <td style="text-align: center">Dave Ramsey
-     <td style="text-align: center">⭐⭐⭐⭐
-     <td style="text-align: center">May 06, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476930399?utm_medium=api&amp;utm_source=rss">The Barefoot Investor: The Only Money Guide You’ll Ever Need</a>
-     <td style="text-align: center">Scott Pape
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">May 06, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476906903?utm_medium=api&amp;utm_source=rss">How to Win Friends &amp; Influence People</a>
-     <td style="text-align: center">Dale Carnegie
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">May 05, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476935689?utm_medium=api&amp;utm_source=rss">The Millionaire Mind</a>
-     <td style="text-align: center">Thomas J. Stanley
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Apr 19, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476934591?utm_medium=api&amp;utm_source=rss">The Millionaire Next Door: The Surprising Secrets of America’s Wealthy</a>
-     <td style="text-align: center">Thomas J. Stanley
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Apr 18, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476932982?utm_medium=api&amp;utm_source=rss">The Compound Effect: Jumpstart Your Income, Your Life, Your Success</a>
-     <td style="text-align: center">Darren Hardy
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Apr 07, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476916718?utm_medium=api&amp;utm_source=rss">DotCom Secrets: The Underground Playbook for Growing Your Company Online</a>
-     <td style="text-align: center">Russell Brunson
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Apr 06, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476917658?utm_medium=api&amp;utm_source=rss">Atomic Habits: An Easy &amp; Proven Way to Build Good Habits &amp; Break Bad Ones</a>
-     <td style="text-align: center">James Clear
-     <td style="text-align: center">⭐⭐⭐⭐⭐
-     <td style="text-align: center">Mar 15, 2024
-   <tr>
-     <td style="text-align: left"><a href="https://www.goodreads.com/review/show/7476961805?utm_medium=api&amp;utm_source=rss">Think and Grow Rich</a>
-     <td style="text-align: center">Napoleon Hill
-     <td style="text-align: center">⭐⭐
-     <td style="text-align: center">Unknown
-</table>
+<p><strong>57 books</strong> completed and reviewed</p>
+<div class="book-table-container">
+   <div class="book-table-wrapper">
+       <table id="bookTable">
+          <thead>
+               <tr>
+                   <th onclick="sortTable(0)">Book Title
+                   <th onclick="sortTable(1)">Author
+                   <th onclick="sortTable(2)">Rating
+                   <th onclick="sortTable(3)">Completed
+           <tbody>
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7998905508?utm_medium=api&amp;utm_source=rss" target="_blank">Expert Secrets: The Underground Playbook for Creating a Mass Movement of People Who Will Pay for Your Advice</a>
+                 <td class="author" data-label="Author">Russell Brunson
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Oct 24, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/8033890786?utm_medium=api&amp;utm_source=rss" target="_blank">Stolen Focus: Why You Can't Pay Attention— and How to Think Deeply Again</a>
+                 <td class="author" data-label="Author">Johann Hari
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Oct 10, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7926204120?utm_medium=api&amp;utm_source=rss" target="_blank">Breath: The New Science of a Lost Art</a>
+                 <td class="author" data-label="Author">James Nestor
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Sep 18, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7819531368?utm_medium=api&amp;utm_source=rss" target="_blank">Hatching Twitter: A True Story of Money, Power, Friendship, and Betrayal</a>
+                 <td class="author" data-label="Author">Nick Bilton
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Sep 09, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7819530752?utm_medium=api&amp;utm_source=rss" target="_blank">Super Pumped: The Battle for Uber</a>
+                 <td class="author" data-label="Author">Mike Isaac
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 27, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7819418065?utm_medium=api&amp;utm_source=rss" target="_blank">Strong Money Australia: How to Gain Financial Independence and Create a Life of Freedom</a>
+                 <td class="author" data-label="Author">Dave Gow
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 11, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7798621770?utm_medium=api&amp;utm_source=rss" target="_blank">Deep Work: Rules for Focused Success in a Distracted World</a>
+                 <td class="author" data-label="Author">Cal Newport
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 04, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7784001335?utm_medium=api&amp;utm_source=rss" target="_blank">Crypto Confidential: Winning and Losing Millions in the New Frontier of Finance</a>
+                 <td class="author" data-label="Author">Nathaniel Eliason
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 29, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7763212999?utm_medium=api&amp;utm_source=rss" target="_blank">Apple in China: The Capture of the World's Greatest Company</a>
+                 <td class="author" data-label="Author">Patrick  McGee
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 25, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7645519551?utm_medium=api&amp;utm_source=rss" target="_blank">Unreasonable Hospitality: The Remarkable Power of Giving People More Than They Expect</a>
+                 <td class="author" data-label="Author">Will Guidara
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 10, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7660805752?utm_medium=api&amp;utm_source=rss" target="_blank">Dividend Investing Made Easy</a>
+                 <td class="author" data-label="Author">Matthew R. Kratter
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jun 21, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7620398789?utm_medium=api&amp;utm_source=rss" target="_blank">The Simple Path to Wealth: Your Road Map to Financial Independence and a Rich, Free Life</a>
+                 <td class="author" data-label="Author">J.L.   Collins
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jun 11, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476905776?utm_medium=api&amp;utm_source=rss" target="_blank">Shoe Dog: A Memoir by the Creator of Nike</a>
+                 <td class="author" data-label="Author">Phil Knight
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 29, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7559672155?utm_medium=api&amp;utm_source=rss" target="_blank">Extremely Hardcore: Inside Elon Musk's Twitter</a>
+                 <td class="author" data-label="Author">Zoë Schiffer
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 16, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476927925?utm_medium=api&amp;utm_source=rss" target="_blank">Wisdom from Rich Dad, Poor Dad: What the Rich Teach Their Kids About Money--That the Poor and the Middle Class Do Not!</a>
+                 <td class="author" data-label="Author">Robert T. Kiyosaki
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 09, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7763205675?utm_medium=api&amp;utm_source=rss" target="_blank">Facebook: The Inside Story</a>
+                 <td class="author" data-label="Author">Steven Levy
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 02, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476929112?utm_medium=api&amp;utm_source=rss" target="_blank">Richer, Wiser, Happier: How the World's Greatest Investors Win in Markets and Life</a>
+                 <td class="author" data-label="Author">William                  Green
+                 <td class="rating" data-label="Rating">
+                 <td class="date" data-label="Date">
+                      Apr 04, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476916363?utm_medium=api&amp;utm_source=rss" target="_blank">$100M Leads: How to Get Strangers To Want To Buy Your Stuff (Acquisition.com $100M Series)</a>
+                 <td class="author" data-label="Author">Alex Hormozi
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Mar 20, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476932490?utm_medium=api&amp;utm_source=rss" target="_blank">The BRRRR Method: Build a Rental Empire With Nothing Out Of Pocket</a>
+                 <td class="author" data-label="Author">David Dodge
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐
+                 <td class="date" data-label="Date">
+                      Mar 07, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476925313?utm_medium=api&amp;utm_source=rss" target="_blank">Just Keep Buying: Proven Ways to Save Money and Build Your Wealth</a>
+                 <td class="author" data-label="Author">Nick Maggiulli
+                 <td class="rating" data-label="Rating">
+                 <td class="date" data-label="Date">
+                      Mar 01, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476905618?utm_medium=api&amp;utm_source=rss" target="_blank">Never Split the Difference: Negotiating as if Your Life Depended on It</a>
+                 <td class="author" data-label="Author">Chris Voss
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jan 30, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476905570?utm_medium=api&amp;utm_source=rss" target="_blank">The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change</a>
+                 <td class="author" data-label="Author">Stephen R. Covey
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jan 28, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476933578?utm_medium=api&amp;utm_source=rss" target="_blank">The Four Pillars of Investing: Lessons for Building a Winning Portfolio</a>
+                 <td class="author" data-label="Author">William J. Bernstein
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jan 13, 2025
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476938190?utm_medium=api&amp;utm_source=rss" target="_blank">The Richest Man in Babylon</a>
+                 <td class="author" data-label="Author">George S. Clason
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Dec 19, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476926232?utm_medium=api&amp;utm_source=rss" target="_blank">Money Men: A Hot Startup, A Billion Dollar Fraud, A Fight for the Truth</a>
+                 <td class="author" data-label="Author">Dan McCrum
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐
+                 <td class="date" data-label="Date">
+                      Dec 15, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476920256?utm_medium=api&amp;utm_source=rss" target="_blank">Dopamine Nation: Finding Balance in the Age of Indulgence</a>
+                 <td class="author" data-label="Author">Anna Lembke
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐
+                 <td class="date" data-label="Date">
+                      Dec 12, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476924416?utm_medium=api&amp;utm_source=rss" target="_blank">I Will Teach You to Be Rich: No Guilt. No Excuses. No BS. Just a 6-Week Program That Works</a>
+                 <td class="author" data-label="Author">Ramit Sethi
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Nov 27, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476913844?utm_medium=api&amp;utm_source=rss" target="_blank">The Cuckoo's Egg: Tracking a Spy Through the Maze of Computer Espionage</a>
+                 <td class="author" data-label="Author">Clifford Stoll
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Nov 12, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476931039?utm_medium=api&amp;utm_source=rss" target="_blank">The Big Secret for the Small Investor: The Shortest Route to Long-Term Investment Success</a>
+                 <td class="author" data-label="Author">Joel Greenblatt
+                 <td class="rating" data-label="Rating">
+                 <td class="date" data-label="Date">
+                      Nov 09, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476937746?utm_medium=api&amp;utm_source=rss" target="_blank">The Psychology of Money</a>
+                 <td class="author" data-label="Author">Morgan Housel
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Nov 08, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476931622?utm_medium=api&amp;utm_source=rss" target="_blank">The Big Short: Inside the Doomsday Machine</a>
+                 <td class="author" data-label="Author">Michael   Lewis
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Nov 04, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476927227?utm_medium=api&amp;utm_source=rss" target="_blank">Number Go Up: Inside Crypto's Wild Rise and Staggering Fall</a>
+                 <td class="author" data-label="Author">Zeke Faux
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Oct 24, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476938634?utm_medium=api&amp;utm_source=rss" target="_blank">Why We Sleep: Unlocking the Power of Sleep and Dreams</a>
+                 <td class="author" data-label="Author">Matthew Walker
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Oct 09, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476917037?utm_medium=api&amp;utm_source=rss" target="_blank">$100M Offers: How To Make Offers So Good People Feel Stupid Saying No</a>
+                 <td class="author" data-label="Author">Alex Hormozi
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Sep 23, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476919220?utm_medium=api&amp;utm_source=rss" target="_blank">Beating the Street</a>
+                 <td class="author" data-label="Author">Peter Lynch
+                 <td class="rating" data-label="Rating">
+                 <td class="date" data-label="Date">
+                      Sep 17, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476925771?utm_medium=api&amp;utm_source=rss" target="_blank">Masters of Deception: The Gang That Ruled Cyberspace</a>
+                 <td class="author" data-label="Author">Michelle Slatalla
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Sep 11, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476936769?utm_medium=api&amp;utm_source=rss" target="_blank">The Next Millionaire Next Door: Enduring Strategies for Building Wealth</a>
+                 <td class="author" data-label="Author">Thomas J. Stanley
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Sep 10, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476923783?utm_medium=api&amp;utm_source=rss" target="_blank">Human Hacking: Win Friends, Influence People, and Leave Them Better Off for Having Met You</a>
+                 <td class="author" data-label="Author">Christopher Hadnagy
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 26, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476906827?utm_medium=api&amp;utm_source=rss" target="_blank">Good to Great: Why Some Companies Make the Leap... and Others Don't</a>
+                 <td class="author" data-label="Author">Jim Collins
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 12, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476919651?utm_medium=api&amp;utm_source=rss" target="_blank">Built to Sell: Creating a Business That Can Thrive Without You</a>
+                 <td class="author" data-label="Author">John Warrillow
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Aug 11, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476921947?utm_medium=api&amp;utm_source=rss" target="_blank">Ghost in the Wires: My Adventures as the World's Most Wanted Hacker</a>
+                 <td class="author" data-label="Author">Kevin D. Mitnick
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 29, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476921314?utm_medium=api&amp;utm_source=rss" target="_blank">How I Rob Banks: And Other Such Places</a>
+                 <td class="author" data-label="Author">FC Barker
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 11, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476918269?utm_medium=api&amp;utm_source=rss" target="_blank">Automatic Income: How to Use the Power of Dividend Investing to Beat the Market and Generate Passive Income for Life (Wealth Building Series)</a>
+                 <td class="author" data-label="Author">Matthew Paulson
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jul 04, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476922793?utm_medium=api&amp;utm_source=rss" target="_blank">How I Invest My Money: Finance Experts Reveal How They Save, Spend, and Invest</a>
+                 <td class="author" data-label="Author">Joshua Brown
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jun 28, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476920903?utm_medium=api&amp;utm_source=rss" target="_blank">Explosive Growth: A Few Things I Learned While Growing To 100 Million Users - And Losing $78 Million</a>
+                 <td class="author" data-label="Author">Cliff Lerner
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jun 21, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476939238?utm_medium=api&amp;utm_source=rss" target="_blank">Your Money or Your Life</a>
+                 <td class="author" data-label="Author">Joe Dominguez
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Jun 07, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476937364?utm_medium=api&amp;utm_source=rss" target="_blank">The Panama Papers: Breaking the Story of How the Rich and Powerful Hide Their Money</a>
+                 <td class="author" data-label="Author">Frederik Obermaier
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 23, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476934057?utm_medium=api&amp;utm_source=rss" target="_blank">The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns (Little Book, Big Profits)</a>
+                 <td class="author" data-label="Author">John C. Bogle
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 07, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476918799?utm_medium=api&amp;utm_source=rss" target="_blank">Baby Steps Millionaires: How Ordinary People Built Extraordinary Wealth-- and How You Can Too</a>
+                 <td class="author" data-label="Author">Dave Ramsey
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 06, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476930399?utm_medium=api&amp;utm_source=rss" target="_blank">The Barefoot Investor: The Only Money Guide You'll Ever Need</a>
+                 <td class="author" data-label="Author">Scott Pape
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 06, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476906903?utm_medium=api&amp;utm_source=rss" target="_blank">How to Win Friends &amp; Influence People</a>
+                 <td class="author" data-label="Author">Dale Carnegie
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      May 05, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476935689?utm_medium=api&amp;utm_source=rss" target="_blank">The Millionaire Mind</a>
+                 <td class="author" data-label="Author">Thomas J. Stanley
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Apr 19, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476934591?utm_medium=api&amp;utm_source=rss" target="_blank">The Millionaire Next Door: The Surprising Secrets of America's Wealthy</a>
+                 <td class="author" data-label="Author">Thomas J. Stanley
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Apr 18, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476932982?utm_medium=api&amp;utm_source=rss" target="_blank">The Compound Effect: Jumpstart Your Income, Your Life, Your Success</a>
+                 <td class="author" data-label="Author">Darren Hardy
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Apr 07, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476916718?utm_medium=api&amp;utm_source=rss" target="_blank">DotCom Secrets: The Underground Playbook for Growing Your Company Online</a>
+                 <td class="author" data-label="Author">Russell Brunson
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Apr 06, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476917658?utm_medium=api&amp;utm_source=rss" target="_blank">Atomic Habits: An Easy &amp; Proven Way to Build Good Habits &amp; Break Bad Ones</a>
+                 <td class="author" data-label="Author">James Clear
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐⭐⭐⭐
+                 <td class="date" data-label="Date">
+                      Mar 15, 2024
+               <tr>
+                 <td class="book-title" data-label="Title">
+                    <a href="https://www.goodreads.com/review/show/7476961805?utm_medium=api&amp;utm_source=rss" target="_blank">Think and Grow Rich</a>
+                 <td class="author" data-label="Author">Napoleon Hill
+                 <td class="rating" data-label="Rating">
+                    ⭐⭐
+                 <td class="date" data-label="Date">
+                      Unknown
+       </table>
+   </div>
+</div>
 <hr />
-<p><em>Last updated: July 19, 2025 at 08:15 PM</em></p>
+<p><em>Last updated: November 05, 2025 at 11:45 AM</em></p>
 <style>
 tr:nth-child(even) {
   background-color: var(--inline-code-bg);
@@ -670,6 +1083,48 @@ thead {
   border-bottom: solid 2px rgba(210, 215, 217, .75);
 }
 </style>
+<script>
+let sortDirection = {};
+function sortTable(columnIndex) {
+    const table = document.getElementById('bookTable');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const headers = table.querySelectorAll('th');
+    // Clear previous sort indicators
+    headers.forEach(header => {
+        header.classList.remove('sort-asc', 'sort-desc');
+    });
+    // Determine sort direction
+    const currentDirection = sortDirection[columnIndex] || 'asc';
+    const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
+    sortDirection[columnIndex] = newDirection;
+    // Add sort indicator to current header
+    headers[columnIndex].classList.add(newDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+    // Sort rows
+    rows.sort((a, b) => {
+        let aValue = a.cells[columnIndex].textContent.trim();
+        let bValue = b.cells[columnIndex].textContent.trim();
+        // Special handling for different column types
+        if (columnIndex === 2) { // Rating column
+            aValue = aValue.length; // Count stars
+            bValue = bValue.length;
+        } else if (columnIndex === 3) { // Date column
+            aValue = new Date(aValue);
+            bValue = new Date(bValue);
+        } else {
+            aValue = aValue.toLowerCase();
+            bValue = bValue.toLowerCase();
+        }
+        if (aValue < bValue) return newDirection === 'asc' ? -1 : 1;
+        if (aValue > bValue) return newDirection === 'asc' ? 1 : -1;
+        return 0;
+    });
+    // Clear tbody and append sorted rows
+    tbody.innerHTML = '';
+    rows.forEach(row => tbody.appendChild(row));
+}
+sortTable(3)
+</script>
          </main>
        </div>
        <div class="row">
@@ -700,16 +1155,16 @@ thead {
  <section>
    <h2 class="panel-heading">Trending Tags</h2>
    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
-        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/python/">Python</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/automation/">Automation</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/api/">API</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/docker/">Docker</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/ffmpeg/">FFMPEG</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/grafana/">Grafana</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/javascript/">JavaScript</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/lora/">LoRa</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/meshtastic/">Meshtastic</a>
         <a class="post-tag btn btn-outline-primary" href="/tags/nodejs/">Nodejs</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/prometheus/">Prometheus</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/rtsp/">RTSP</a>
-        <a class="post-tag btn btn-outline-primary" href="/tags/steam/">Steam</a>
    </div>
  </section>
    </div>
